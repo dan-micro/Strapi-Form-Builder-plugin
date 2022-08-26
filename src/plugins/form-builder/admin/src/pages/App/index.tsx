@@ -10,19 +10,17 @@ import { Switch, Route } from "react-router-dom";
 import { NotFound } from "@strapi/helper-plugin";
 import pluginId from "../../pluginId";
 import HomePage from "../HomePage";
-import { ThemeProvider } from "styled-components";
-import { createTheme } from "@mui/material";
-import { theme } from "./theme";
+import { Providers } from "../../lib/Providers";
 
 const App: React.VoidFunctionComponent = () => {
   return (
     <div>
-      <ThemeProvider theme={theme}>
+      <Providers>
         <Switch>
           <Route path={`/plugins/${pluginId}`} component={HomePage} exact />
           <Route component={NotFound} />
         </Switch>
-      </ThemeProvider>
+      </Providers>
     </div>
   );
 };

@@ -12,8 +12,11 @@
     "@mui/material": "^5.10.2",
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
     "@mui/styled-engine-sc": "^5.10.1",
+    "@tanstack/react-query": "^4.2.3",
+    "@types/lodash-es": "^4.17.6",
+    "gsap": "^3.11.0",
     "jotai": "^1.8.0",
-    "react-beautiful-dnd": "^13.1.0"
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "styled-components": "^5.3.5",

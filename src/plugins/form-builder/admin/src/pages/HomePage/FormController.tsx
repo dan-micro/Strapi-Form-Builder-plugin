@@ -1,54 +1,58 @@
-import React from "react";
+import React, { RefObject } from "react";
+import { groupBy } from "lodash-es";
+import { useQuery } from "@tanstack/react-query";
 import { Grid, Paper, Stack, Typography } from "@mui/material";
 import { controlElementsConfig } from "./FormController/controlElementsConfig";
 import { Search } from "./FormController/Search";
-import {
-  Draggable,
-  DraggableProvided,
-  DraggableStateSnapshot,
-  Droppable,
-} from "react-beautiful-dnd";
-export const FormController = () => {
+import { getWidgetsTypes } from "../../api/widgets/getWidgetsTypes";
+import { LoadingData } from "../../components/LoadingData/LoadingData";
+import { useDnd } from "./FormController/useDnd";
+
+interface FormControllerProps {
+  dropRef: RefObject<HTMLDivElement>;
+}
+
+export const FormController = (props: FormControllerProps) => {
+  const { data, isLoading, error } = useQuery(["getWidgetsTypes"], () =>
+    getWidgetsTypes()
+  );
+  const controlElementsConfigToName = groupBy(controlElementsConfig, "name");
+  const { addWidgetRefToWidgetsRefs } = useDnd(props.dropRef, data);
+
   return (
     <Paper elevation={3} sx={{ p: 2, flexBasis: "20%" }}>
       <Search />
-      <Droppable droppableId="List">
-        {(provided) => (
-          <div {...provided.droppableProps} ref={provided.innerRef}>
-            <Grid container gap={2} sx={{ position: "sticky" }}>
-              {controlElementsConfig.map((el, idx) => (
-                <Grid item xs sx={{ minWidth: "max-content" }}>
-                  <Draggable index={idx} draggableId={el.name}>
-                    {(
-                      dragProvided: DraggableProvided
-                      // dragSnapshot: DraggableStateSnapshot
-                    ) => (
-                      <div
-                        key={idx}
-                        ref={dragProvided.innerRef}
-                        {...dragProvided.draggableProps}
-                        {...dragProvided.dragHandleProps}
-                      >
-                        <Paper
-                          sx={{
-                            p: 2,
-                            cursor: "pointer",
-                          }}
-                        >
-                          <Stack gap={2} alignItems="center">
-                            {el.icon}
-                            <Typography>{el.label}</Typography>
-                          </Stack>
-                        </Paper>
-                      </div>
-                    )}
-                  </Draggable>
+      <LoadingData loading={isLoading} error={error}>
+        {() => (
+          <Grid container gap={2} sx={{ position: "sticky" }}>
+            {data.map((el) => {
+              const widgetName = el.attributes.name;
+              const elementConfig = controlElementsConfigToName[widgetName][0];
+              return (
+                <Grid
+                  key={widgetName}
+                  ref={addWidgetRefToWidgetsRefs}
+                  item
+                  xs
+                  sx={{ minWidth: "max-content" }}
+                >
+                  <Paper
+                    sx={{
+                      p: 2,
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Stack gap={2} alignItems="center">
+                      {elementConfig.icon}
+                      <Typography>{elementConfig.label}</Typography>
+                    </Stack>
+                  </Paper>
                 </Grid>
-              ))}
-            </Grid>
-          </div>
+              );
+            })}
+          </Grid>
         )}
-      </Droppable>
+      </LoadingData>
     </Paper>
   );
 };

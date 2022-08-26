@@ -1,21 +1,16 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useRef } from "react";
+
 import { FormPlayground } from "./FormPlayground";
 import { FormController } from "./FormController";
-import { Stack, Button } from "@mui/material";
-import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import { Stack } from "@mui/material";
 
 const HomePage = () => {
-  const handleDragEnd = (result: DropResult) => {
-    console.log("==> result ==>", result);
-  };
+  const dropRef = useRef<HTMLDivElement>(null);
 
   return (
     <Stack flexWrap="wrap" direction="row" gap={2} sx={{ pt: 10, px: 3 }}>
-      <DragDropContext onDargEnd={handleDragEnd}>
-        <FormPlayground />
-        <FormController />
-      </DragDropContext>
+      <FormPlayground ref={dropRef} />
+      <FormController dropRef={dropRef} />
     </Stack>
   );
 };

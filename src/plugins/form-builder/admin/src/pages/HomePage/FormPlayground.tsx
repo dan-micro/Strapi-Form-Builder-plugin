@@ -1,9 +1,9 @@
-import { Box, styled } from "@mui/material";
-import React from "react";
-import { Droppable } from "react-beautiful-dnd";
-export const FormPlayground = () => {
+import { Box } from "@mui/material";
+import React, { forwardRef } from "react";
+export const FormPlayground = forwardRef((_, ref) => {
   return (
     <Box
+      ref={ref}
       sx={{
         flex: 1,
         minWidth: "400px",
@@ -12,15 +12,8 @@ export const FormPlayground = () => {
         border: "2px dashed #000",
         mx: 2,
       }}
-    >
-      <Droppable style={{ flex: 1 }} droppableId="List1">
-        {(provided) => (
-          <div {...provided.droppableProps} ref={provided.innerRef}>
-            {provided.placeholder}
-            <div>Playground</div>
-          </div>
-        )}
-      </Droppable>
-    </Box>
+    ></Box>
   );
-};
+});
+
+FormPlayground.displayName = "FormPlayground";

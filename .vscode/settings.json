@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
-    "Strapi"
+    "Strapi",
+    "tanstack"
   ],
   "typescript.tsdk": "node_modules/typescript/lib"
 }
