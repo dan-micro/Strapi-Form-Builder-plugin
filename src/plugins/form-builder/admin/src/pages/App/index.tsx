@@ -5,19 +5,24 @@
  *
  */
 
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { NotFound } from '@strapi/helper-plugin';
-import pluginId from '../../pluginId';
-import HomePage from '../HomePage';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import { NotFound } from "@strapi/helper-plugin";
+import pluginId from "../../pluginId";
+import HomePage from "../HomePage";
+import { ThemeProvider } from "styled-components";
+import { createTheme } from "@mui/material";
+import { theme } from "./theme";
 
 const App: React.VoidFunctionComponent = () => {
   return (
     <div>
-      <Switch>
-        <Route path={`/plugins/${pluginId}`} component={HomePage} exact />
-        <Route component={NotFound} />
-      </Switch>
+      <ThemeProvider theme={theme}>
+        <Switch>
+          <Route path={`/plugins/${pluginId}`} component={HomePage} exact />
+          <Route component={NotFound} />
+        </Switch>
+      </ThemeProvider>
     </div>
   );
 };

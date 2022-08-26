@@ -1,0 +1,288 @@
+{
+  "data": {
+    "widgetTypeOptions": {
+      "data": [
+        {
+          "id": "1",
+          "attributes": {
+            "name": "url",
+            "type": "string",
+            "values": null
+          }
+        },
+        {
+          "id": "2",
+          "attributes": {
+            "name": "label",
+            "type": "string",
+            "values": null
+          }
+        },
+        {
+          "id": "3",
+          "attributes": {
+            "name": "gridColumn",
+            "type": "enum",
+            "values": "col_1, col_2, col_3, col_4, col_5, col_6, col_7, col_8, col_9, col_10, col_11, col_12, none"
+          }
+        },
+        {
+          "id": "4",
+          "attributes": {
+            "name": "type",
+            "type": "enum",
+            "values": "text, password, textarea, email, search, tel, file, number, url, time, date"
+          }
+        },
+        {
+          "id": "5",
+          "attributes": {
+            "name": "clearable",
+            "type": "boolean",
+            "values": null
+          }
+        },
+        {
+          "id": "6",
+          "attributes": {
+            "name": "dense",
+            "type": "boolean",
+            "values": null
+          }
+        },
+        {
+          "id": "7",
+          "attributes": {
+            "name": "mask",
+            "type": "enum",
+            "values": "date, datetime, time, fulltime, phone, card"
+          }
+        },
+        {
+          "id": "8",
+          "attributes": {
+            "name": "hint",
+            "type": "string",
+            "values": null
+          }
+        },
+        {
+          "id": "9",
+          "attributes": {
+            "name": "prefix",
+            "type": "string",
+            "values": null
+          }
+        },
+        {
+          "id": "10",
+          "attributes": {
+            "name": "suffix",
+            "type": "string",
+            "values": null
+          }
+        },
+        {
+          "id": "11",
+          "attributes": {
+            "name": "counter",
+            "type": "boolean",
+            "values": null
+          }
+        },
+        {
+          "id": "12",
+          "attributes": {
+            "name": "autogrow",
+            "type": "boolean",
+            "values": null
+          }
+        },
+        {
+          "id": "13",
+          "attributes": {
+            "name": "color",
+            "type": "string",
+            "values": null
+          }
+        },
+        {
+          "id": "14",
+          "attributes": {
+            "name": "bgColor",
+            "type": "string",
+            "values": null
+          }
+        },
+        {
+          "id": "15",
+          "attributes": {
+            "name": "filled",
+            "type": "boolean",
+            "values": null
+          }
+        },
+        {
+          "id": "16",
+          "attributes": {
+            "name": "outlined",
+            "type": "boolean",
+            "values": null
+          }
+        },
+        {
+          "id": "17",
+          "attributes": {
+            "name": "rounded",
+            "type": "boolean",
+            "values": null
+          }
+        },
+        {
+          "id": "18",
+          "attributes": {
+            "name": "square",
+            "type": "boolean",
+            "values": null
+          }
+        },
+        {
+          "id": "19",
+          "attributes": {
+            "name": "optionValue",
+            "type": "string",
+            "values": null
+          }
+        },
+        {
+          "id": "20",
+          "attributes": {
+            "name": "optionLabel",
+            "type": "string",
+            "values": null
+          }
+        },
+        {
+          "id": "21",
+          "attributes": {
+            "name": "autocomplete",
+            "type": "string",
+            "values": null
+          }
+        },
+        {
+          "id": "22",
+          "attributes": {
+            "name": "useInput",
+            "type": "boolean",
+            "values": null
+          }
+        },
+        {
+          "id": "23",
+          "attributes": {
+            "name": "multiple",
+            "type": "boolean",
+            "values": null
+          }
+        },
+        {
+          "id": "24",
+          "attributes": {
+            "name": "maxValues",
+            "type": "number",
+            "values": null
+          }
+        },
+        {
+          "id": "25",
+          "attributes": {
+            "name": "useChips",
+            "type": "boolean",
+            "values": null
+          }
+        },
+        {
+          "id": "26",
+          "attributes": {
+            "name": "newValueMode",
+            "type": "enum",
+            "values": "add, add-unique, toggle"
+          }
+        },
+        {
+          "id": "27",
+          "attributes": {
+            "name": "maxFileSize",
+            "type": "number",
+            "values": null
+          }
+        },
+        {
+          "id": "28",
+          "attributes": {
+            "name": "maxFiles",
+            "type": "number",
+            "values": null
+          }
+        },
+        {
+          "id": "29",
+          "attributes": {
+            "name": "signatureSize",
+            "type": "number",
+            "values": null
+          }
+        },
+        {
+          "id": "30",
+          "attributes": {
+            "name": "signatureThinning",
+            "type": "number",
+            "values": null
+          }
+        },
+        {
+          "id": "31",
+          "attributes": {
+            "name": "signatureSmoothing",
+            "type": "number",
+            "values": null
+          }
+        },
+        {
+          "id": "32",
+          "attributes": {
+            "name": "signatureStreamline",
+            "type": "number",
+            "values": null
+          }
+        },
+        {
+          "id": "33",
+          "attributes": {
+            "name": "emitValue",
+            "type": "boolean",
+            "values": null
+          }
+        },
+        {
+          "id": "34",
+          "attributes": {
+            "name": "mapOptions",
+            "type": "boolean",
+            "values": null
+          }
+        },
+        {
+          "id": "35",
+          "attributes": {
+            "name": "useScanner",
+            "type": "boolean",
+            "values": null
+          }
+        }
+      ]
+    }
+  }
+}

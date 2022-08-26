@@ -1,10 +1,18 @@
 export default [
   {
-    method: 'GET',
-    path: '/',
-    handler: 'myController.index',
+    method: "GET",
+    path: "/",
+    handler: "myController.index",
     config: {
-      policies: [],
+      auth: false,
+    },
+  },
+  {
+    method: "GET",
+    path: "/widgetTypes",
+    handler: "widgetTypes.index",
+    config: {
+      auth: false,
     },
   },
 ];

@@ -1,0 +1,35 @@
+{
+    "kind": "collectionType",
+    "collectionName": "widgets",
+    "info": {
+        "singularName": "widget",
+        "pluralName": "widgets",
+        "displayName": "Widget",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string",
+            "maxLength": 40,
+            "required": true,
+            "minLength": 1
+        },
+        "name": {
+            "type": "string",
+            "required": true,
+            "maxLength": 40,
+            "minLength": 1,
+            "regex": "^[a-z]+((\\\\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?$"
+        },
+        "options": {
+            "displayName": "options",
+            "type": "component",
+            "repeatable": false,
+            "component": "options.options"
+        }
+    }
+}
