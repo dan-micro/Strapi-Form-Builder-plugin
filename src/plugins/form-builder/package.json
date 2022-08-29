@@ -8,6 +8,7 @@
     "kind": "plugin"
   },
   "dependencies": {
+    "@fontsource/inter": "^4.5.12",
     "@mui/icons-material": "^5.10.2",
     "@mui/material": "^5.10.2",
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",

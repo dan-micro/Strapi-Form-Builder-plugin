@@ -73,7 +73,18 @@ export const DraftForm = (props: DraftFormProps) => {
             <WidgetCmp {...conf} />
             {hover === idx && (
               <Stack
-                sx={{ position: "absolute", right: 0, top: "100%" }}
+                sx={{
+                  position: "absolute",
+                  right: 0,
+                  top: 0,
+                  background: "#505050",
+                  mr: 1,
+                  mt: 1,
+                  borderRadius: "8px",
+                  svg: { fill: "#fff" },
+                }}
+                gap={1}
+                alignItems="center"
                 direction="row"
                 justifyContent="end"
               >

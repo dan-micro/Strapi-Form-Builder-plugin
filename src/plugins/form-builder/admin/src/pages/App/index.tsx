@@ -13,6 +13,7 @@ import HomePage from "../HomePage";
 import { Providers } from "../../lib/Providers";
 import gsap from "gsap";
 import Draggable from "gsap/dist/Draggable";
+import "@fontsource/inter";
 
 gsap.registerPlugin(Draggable);
 const App: React.VoidFunctionComponent = () => {
