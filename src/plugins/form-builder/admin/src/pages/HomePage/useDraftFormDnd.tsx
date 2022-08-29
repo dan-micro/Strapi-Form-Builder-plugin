@@ -28,13 +28,21 @@ export const useDraftFormDnd = () => {
       }
       Draggable.create(ref, {
         type: "x,y",
-        dragClickables: true,
         onPress() {
           lastPos[idx] = { x: this.x, y: this.y };
         },
+        onDrag() {
+          compact(formFieldsRef.current).forEach((_ref, _idx) => {
+            _ref.style.setProperty(
+              "background",
+              this.hitTest(_ref, "50%") ? "#e6e4e4" : "unset"
+            );
+          });
+        },
         onDragEnd() {
           compact(formFieldsRef.current).forEach((_ref, _idx) => {
-            if (this.hitTest(_ref)) {
+            _ref.style.setProperty("background", "unset");
+            if (this.hitTest(_ref, "50%")) {
               setFormConfig((prev) => swapArrayLocs(prev, _idx, idx));
             }
           });

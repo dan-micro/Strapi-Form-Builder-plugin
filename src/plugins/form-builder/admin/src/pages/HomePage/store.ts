@@ -12,10 +12,9 @@ export const formConfigAtom = atom<FormConfig[]>([]);
 interface FormBuildModal {
   mode: "create" | "edit";
   interfaceComponent: string;
-  predefinedValues?: Record<string, any>;
+  predefinedValues: Record<string, any>;
+  title: string;
+  idx: number;
 }
 
-export const formBuildModalAtom = atom<FormBuildModal | undefined>({
-  mode: "create",
-  interfaceComponent: "input",
-});
+export const formBuildModalAtom = atom<Partial<FormBuildModal>>({});

@@ -20,6 +20,7 @@ export const ConfigModal = () => {
   const [formBuildModal, setFormBuildModal] = useAtom(formBuildModalAtom);
   const [formConfig, setFormConfig] = useAtom(formConfigAtom);
   const [options, setOptions] = useState<Record<string, any>>({});
+  const [title, setTitle] = useState("");
 
   const { data, isLoading, error } = useQuery(["getWidgetsTypes"], () =>
     getWidgetsTypes()
@@ -43,7 +44,7 @@ export const ConfigModal = () => {
     (cec) => cec.name === formBuildModal?.interfaceComponent
   );
 
-  const closeHandler = () => setFormBuildModal(undefined);
+  const closeHandler = () => setFormBuildModal({});
 
   const addHandler = () => {
     setFormConfig(
@@ -53,7 +54,7 @@ export const ConfigModal = () => {
           name: widgetTypeOptions.attributes.name,
           interfaceComponent: widgetTypeOptions.attributes.interfaceComponent,
           options,
-          title: "",
+          title,
         },
       ])
     );
@@ -70,9 +71,29 @@ export const ConfigModal = () => {
   };
 
   const editHandler = () => {
-    console.log("==> editHandler ==>");
+    setFormConfig((prev) => {
+      const newPrev = [...prev];
+      const configIdx = formBuildModal.idx!;
+      const preFormElementConfig = newPrev[configIdx];
+      const newFormElementConfig = {
+        interfaceComponent: formBuildModal.interfaceComponent!!,
+        name: preFormElementConfig.name,
+        title: isEmpty(formBuildModal.title)
+          ? preFormElementConfig.title
+          : formBuildModal.title ?? "",
+        widgetType: preFormElementConfig.widgetType,
+        options: {
+          ...(formBuildModal.predefinedValues ?? {}),
+          ...options,
+        },
+      };
+      newPrev.splice(configIdx, 1, newFormElementConfig);
+      return newPrev;
+    });
+
+    closeHandler();
   };
-  // console.log("==> formBuildModal ==>", formBuildModal);
+
   return (
     <Dialog fullWidth maxWidth="md" open onClose={closeHandler}>
       <Header onClose={closeHandler} icon={widgetMetaData?.icon!}>
