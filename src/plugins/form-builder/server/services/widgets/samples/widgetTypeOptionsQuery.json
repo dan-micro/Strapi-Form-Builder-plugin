@@ -281,6 +281,14 @@
             "type": "boolean",
             "values": null
           }
+        },
+        {
+          "id": "36",
+          "attributes": {
+            "name": "icon",
+            "type": "string",
+            "values": null
+          }
         }
       ]
     }

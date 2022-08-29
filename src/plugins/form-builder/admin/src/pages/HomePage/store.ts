@@ -1,5 +1,12 @@
 import { atom } from "jotai";
-// interface FormComponentsAtom {}
-// export const formComponentsAtom = atom<FormComponentsAtom>();
 
-export const formBuildModalAtom = atom<string | undefined>(undefined);
+export interface FormConfig {
+  title: string;
+  name: string;
+  widgetType: string;
+  options: Record<string, any>;
+}
+
+export const formConfigAtom = atom<FormConfig[]>([]);
+
+export const formBuildModalAtom = atom<string>("");

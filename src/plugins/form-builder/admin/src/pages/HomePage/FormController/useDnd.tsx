@@ -3,7 +3,7 @@ import { useRef, useEffect, RefObject } from "react";
 import Draggable from "gsap/dist/Draggable";
 import gsap from "gsap";
 import { formBuildModalAtom } from "../store";
-import { useAtom } from "jotai";
+import { useUpdateAtom } from "jotai/utils";
 gsap.registerPlugin(Draggable);
 
 export const useDnd = (
@@ -12,8 +12,7 @@ export const useDnd = (
 ): {
   addWidgetRefToWidgetsRefs: (ref: HTMLDivElement) => void;
 } => {
-  const [_, setFormBuildModal] = useAtom(formBuildModalAtom);
-
+  const setFormBuildModal = useUpdateAtom(formBuildModalAtom);
   const widgetRefs = useRef<HTMLDivElement[]>([]);
   const addWidgetRefToWidgetsRefs = (ref: HTMLDivElement) => {
     widgetRefs.current.push(ref);
@@ -32,7 +31,8 @@ export const useDnd = (
         },
         onDragEnd() {
           if (dropRef && this.hitTest(dropRef.current)) {
-            console.log("==> hit passed ==>");
+            console.log("==> hit passed ==>", ref.id);
+            setFormBuildModal(ref.id);
           }
           const tl = gsap.timeline();
           tl.to(ref, { opacity: 0, display: "none" });

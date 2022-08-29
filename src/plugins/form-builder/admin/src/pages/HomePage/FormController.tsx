@@ -31,6 +31,7 @@ export const FormController = (props: FormControllerProps) => {
               return (
                 <Grid
                   key={widgetName}
+                  id={widgetName}
                   ref={addWidgetRefToWidgetsRefs}
                   item
                   xs
