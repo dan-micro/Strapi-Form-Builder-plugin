@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, TextField, Typography } from "@mui/material";
+import { TextField } from "@mui/material";
 import { WidgetTypeOptionProps } from "../WidgetTypeOption";
 import { OptionWrapper } from "./OptionWrapper";
 
@@ -9,7 +9,8 @@ export const StringOption = (props: StringOptionProps) => {
     <OptionWrapper label={props.name}>
       <TextField
         fullWidth
-        value={props.value ?? ""}
+        defaultValue={props.defaultValue}
+        value={props.value}
         onChange={(e) => props.onChange(e.target.value)}
       />
     </OptionWrapper>

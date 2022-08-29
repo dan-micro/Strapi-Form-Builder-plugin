@@ -9,7 +9,6 @@ import {
 type CheckboxProps = FormConfig;
 
 export const Checkbox = (props: CheckboxProps) => {
-  console.log("==> props ==>", props.options.icon);
   return (
     <Box>
       <FormGroup row>

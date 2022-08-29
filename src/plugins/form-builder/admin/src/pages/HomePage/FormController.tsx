@@ -1,4 +1,4 @@
-import React, { RefObject } from "react";
+import React, { RefObject, MutableRefObject } from "react";
 import { groupBy } from "lodash-es";
 import { useQuery } from "@tanstack/react-query";
 import { Grid, Paper, Stack, Typography } from "@mui/material";
@@ -6,10 +6,11 @@ import { controlElementsConfig } from "./FormController/controlElementsConfig";
 import { Search } from "./FormController/Search";
 import { getWidgetsTypes } from "../../api/widgets/getWidgetsTypes";
 import { LoadingData } from "../../components/LoadingData/LoadingData";
-import { useDnd } from "./FormController/useDnd";
+import { useFormControllerDnd } from "./FormController/useFormControllerDnd";
 
 interface FormControllerProps {
   dropRef: RefObject<HTMLDivElement>;
+  formFieldsRef: MutableRefObject<HTMLDivElement[]>;
 }
 
 export const FormController = (props: FormControllerProps) => {
@@ -17,7 +18,11 @@ export const FormController = (props: FormControllerProps) => {
     getWidgetsTypes()
   );
   const controlElementsConfigToName = groupBy(controlElementsConfig, "name");
-  const { addWidgetRefToWidgetsRefs } = useDnd(props.dropRef, data);
+  const { addWidgetRefToWidgetsRefs } = useFormControllerDnd(
+    props.dropRef,
+    props.formFieldsRef,
+    data
+  );
 
   return (
     <Paper elevation={3} sx={{ p: 2, flexBasis: "20%" }}>
@@ -25,12 +30,12 @@ export const FormController = (props: FormControllerProps) => {
       <LoadingData loading={isLoading} error={error}>
         {() => (
           <Grid container gap={2} sx={{ position: "sticky" }}>
-            {data.map((el) => {
-              const widgetName = el.attributes.name;
+            {data.map((el, idx) => {
+              const widgetName = el.attributes.interfaceComponent;
               const elementConfig = controlElementsConfigToName[widgetName][0];
               return (
                 <Grid
-                  key={widgetName}
+                  key={widgetName + idx}
                   id={widgetName}
                   ref={addWidgetRefToWidgetsRefs}
                   item

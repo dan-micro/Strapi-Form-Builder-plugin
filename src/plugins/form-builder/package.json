@@ -16,7 +16,8 @@
     "@types/lodash-es": "^4.17.6",
     "gsap": "^3.11.0",
     "jotai": "^1.8.0",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "react-mask-field": "^3.0.1"
   },
   "devDependencies": {
     "styled-components": "^5.3.5",

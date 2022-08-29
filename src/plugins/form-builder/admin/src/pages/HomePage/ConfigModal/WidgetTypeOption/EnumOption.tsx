@@ -16,6 +16,7 @@ export const EnumOption = (props: EnumOptionProps) => {
     <OptionWrapper label={props.name}>
       <Select
         fullWidth
+        defaultValue={props.defaultValue}
         inputProps={{ id: props.name }}
         value={props.value}
         onChange={(e) => props.onChange(e.target.value)}

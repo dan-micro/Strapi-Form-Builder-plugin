@@ -11,7 +11,10 @@ import { NotFound } from "@strapi/helper-plugin";
 import pluginId from "../../pluginId";
 import HomePage from "../HomePage";
 import { Providers } from "../../lib/Providers";
+import gsap from "gsap";
+import Draggable from "gsap/dist/Draggable";
 
+gsap.registerPlugin(Draggable);
 const App: React.VoidFunctionComponent = () => {
   return (
     <div>

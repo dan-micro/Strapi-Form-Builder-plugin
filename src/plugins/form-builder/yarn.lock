@@ -525,6 +525,11 @@ react-is@^18.2.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
+react-mask-field@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-mask-field/-/react-mask-field-3.0.1.tgz#ab0b1e4f0ee62471cf15f0b189cdc9b30ce0f771"
+  integrity sha512-nwatwFly2m5bXobeKq6OWtsqwcZr/Kw9i9oGvZvEdrbse/bOPX509LMSPybRh++v0uBoBINQ4VvRpl211xSCag==
+
 react-transition-group@^4.4.5:
   version "4.4.5"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.5.tgz#e53d4e3f3344da8521489fbef8f2581d42becdd1"

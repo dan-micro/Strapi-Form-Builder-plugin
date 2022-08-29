@@ -8,6 +8,7 @@ import { StringOption } from "./WidgetTypeOption/StringOption";
 export interface WidgetTypeOptionProps {
   name: string;
   type: "string" | "boolean" | "number" | "enum";
+  defaultValue: any;
   onChange: (val: any) => void;
   value: any;
   values: any;

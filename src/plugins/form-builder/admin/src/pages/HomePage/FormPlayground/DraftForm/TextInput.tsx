@@ -1,12 +1,34 @@
-import { FormControl, FormHelperText, Stack } from "@mui/material";
+import {
+  FormControl,
+  FormHelperText,
+  // InputBaseComponentProps,
+  Stack,
+} from "@mui/material";
 import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { isEmpty } from "lodash-es";
-import React, { useState } from "react";
+import React, { useState, ElementType } from "react";
 import { FormConfig } from "../../store";
 import CloseIcon from "@mui/icons-material/Close";
+import { MaskField } from "react-mask-field";
+
+const colorOptions = [
+  "primary",
+  "secondary",
+  "error",
+  "info",
+  "success",
+  "warning",
+];
+
+// type CustomMaskFieldProps = ElementType<InputBaseComponentProps> & {
+//   mask: "date" | "datetime" | "time" | "fulltime" | "phone" | "card";
+// };
+
+// const CustomMaskField = (props) => {
+//   return <></>;
+// };
 
 type TextInputProps = FormConfig;
-
 export const TextInput = (props: TextInputProps) => {
   const [value, setValue] = useState("");
   const [count, setCount] = useState((props.options.value ?? "").length);
@@ -32,13 +54,20 @@ export const TextInput = (props: TextInputProps) => {
         label={props.options.label}
         value={value}
         multiline={props.options.autogrow ?? false}
-        color={props.options.color}
+        color={
+          colorOptions.includes(props.options.color)
+            ? props.options.color
+            : "primary"
+        }
         size={props.options.dense ? "small" : "medium"}
         onChange={(e) => {
           setValue(e.target.value);
           setCount(count + 1);
         }}
         InputProps={{
+          // inputComponent: (_props) => (
+          //   <CustomMaskField mask={props.options.mask} {..._props} />
+          // ),
           startAdornment: props.options.prefix,
           endAdornment: (
             <Stack direction="row" gap={2} alignItems="center">

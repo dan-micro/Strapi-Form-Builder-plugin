@@ -8,7 +8,8 @@ export const BooleanOption = (props: BooleanOptionProps) => {
   return (
     <OptionWrapper label={props.name}>
       <Checkbox
-        checked={props.value ?? false}
+        defaultChecked={props.defaultValue}
+        checked={props.value}
         onChange={(_, checked) => props.onChange(checked)}
       />
     </OptionWrapper>

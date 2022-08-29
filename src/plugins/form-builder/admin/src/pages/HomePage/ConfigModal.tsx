@@ -15,7 +15,6 @@ import { Header } from "./ConfigModal/Title";
 import { WidgetTypeOption } from "./ConfigModal/WidgetTypeOption";
 import { controlElementsConfig } from "./FormController/controlElementsConfig";
 import { formBuildModalAtom, formConfigAtom } from "./store";
-import { useImmerAtom } from "jotai/immer";
 
 export const ConfigModal = () => {
   const [formBuildModal, setFormBuildModal] = useAtom(formBuildModalAtom);
@@ -26,22 +25,25 @@ export const ConfigModal = () => {
     getWidgetsTypes()
   );
 
-  const widgetTypeOptions = data.find(
-    (d) => d.attributes.name === formBuildModal
+  const widgetTypeOptions = (data ?? []).find(
+    (d) =>
+      d.attributes.interfaceComponent === formBuildModal?.interfaceComponent
   );
 
-  const optionsList = reverse(
-    sortBy(
-      widgetTypeOptions.attributes.widgetTypeOptions.data,
-      (d) => d.attributes.type
-    )
-  );
+  const optionsList =
+    widgetTypeOptions &&
+    reverse(
+      sortBy(
+        widgetTypeOptions.attributes.widgetTypeOptions.data,
+        (d) => d.attributes.type
+      )
+    );
 
   const widgetMetaData = controlElementsConfig.find(
-    (cec) => cec.name === formBuildModal
+    (cec) => cec.name === formBuildModal?.interfaceComponent
   );
 
-  const cancelHandler = () => setFormBuildModal("");
+  const closeHandler = () => setFormBuildModal(undefined);
 
   const addHandler = () => {
     setFormConfig(
@@ -49,18 +51,17 @@ export const ConfigModal = () => {
         {
           widgetType: widgetTypeOptions.id,
           name: widgetTypeOptions.attributes.name,
+          interfaceComponent: widgetTypeOptions.attributes.interfaceComponent,
           options,
           title: "",
         },
       ])
     );
-    setFormBuildModal("");
+    closeHandler();
   };
 
-  if (isEmpty(optionsList)) {
-    // add Widget
+  if (!isLoading && isEmpty(optionsList)) {
     addHandler();
-    console.log("==> there is no option to configure  ==>");
     return <></>;
   }
 
@@ -68,30 +69,44 @@ export const ConfigModal = () => {
     setOptions((prev) => ({ ...prev, [name]: val }));
   };
 
+  const editHandler = () => {
+    console.log("==> editHandler ==>");
+  };
+  // console.log("==> formBuildModal ==>", formBuildModal);
   return (
-    <Dialog fullWidth maxWidth="md" open onClose={cancelHandler}>
-      <Header onClose={cancelHandler} icon={widgetMetaData?.icon!}>
+    <Dialog fullWidth maxWidth="md" open onClose={closeHandler}>
+      <Header onClose={closeHandler} icon={widgetMetaData?.icon!}>
         {widgetMetaData?.label}
       </Header>
       <DialogContent dividers>
         <LoadingData loading={isLoading} error={error}>
           {() => (
             <Grid container gap={2}>
-              {optionsList.map((option) => (
-                <Grid
-                  item
-                  sm={option.attributes.type === "boolean" ? 2.8 : 5.8}
-                >
-                  <WidgetTypeOption
-                    key={option.id}
-                    {...option.attributes}
-                    value={options[option.attributes.name]}
-                    onChange={(val) =>
-                      widgetTypeOptionChangeHandler(option.attributes.name, val)
-                    }
-                  />
-                </Grid>
-              ))}
+              {optionsList.map((option) => {
+                return (
+                  <Grid
+                    item
+                    sm={option.attributes.type === "boolean" ? 2.8 : 5.8}
+                  >
+                    <WidgetTypeOption
+                      key={option.id}
+                      {...option.attributes}
+                      value={options[option.attributes.name]}
+                      defaultValue={
+                        formBuildModal?.predefinedValues?.[
+                          option.attributes.name
+                        ]
+                      }
+                      onChange={(val) =>
+                        widgetTypeOptionChangeHandler(
+                          option.attributes.name,
+                          val
+                        )
+                      }
+                    />
+                  </Grid>
+                );
+              })}
             </Grid>
           )}
         </LoadingData>
@@ -101,7 +116,7 @@ export const ConfigModal = () => {
           variant="contained"
           color="error"
           sx={{ textTransform: "capitalize", fontWeight: 600 }}
-          onClick={cancelHandler}
+          onClick={closeHandler}
         >
           cancel
         </Button>
@@ -109,9 +124,9 @@ export const ConfigModal = () => {
           variant="contained"
           color="success"
           sx={{ textTransform: "capitalize", fontWeight: 600 }}
-          onClick={addHandler}
+          onClick={formBuildModal?.mode === "create" ? addHandler : editHandler}
         >
-          Add
+          {formBuildModal?.mode === "create" ? "Add" : "Edit"}
         </Button>
       </DialogActions>
     </Dialog>

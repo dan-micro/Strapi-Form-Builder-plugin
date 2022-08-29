@@ -15,25 +15,20 @@ interface ControlElement {
 
 export const controlElementsConfig: ControlElement[] = [
   {
-    name: "Text input",
+    name: "input",
     label: "Text Input",
     icon: <FormatColorTextIcon />,
   },
   {
-    name: "Select input",
+    name: "select",
     label: "Select",
     icon: <FormatListBulletedIcon />,
   },
-  { name: "Toggle input", label: "Check Box", icon: <ToggleOffIcon /> },
+  { name: "toggle", label: "Check Box", icon: <ToggleOffIcon /> },
   {
-    name: "Button",
+    name: "button",
     label: "Button",
     icon: <SmartButtonIcon />,
   },
-  { name: "File upload", label: "File", icon: <FilePresentIcon /> },
-  {
-    name: "grid",
-    label: "Columns",
-    icon: <ViewQuiltIcon />,
-  },
+  { name: "fileUpload", label: "File", icon: <FilePresentIcon /> },
 ];
