@@ -2,20 +2,20 @@ import React from "react";
 import { FormConfig } from "../../store";
 import {
   Box,
-  Checkbox as MuiCheckbox,
+  Switch as MuiSwitch,
   FormControlLabel,
   FormGroup,
 } from "@mui/material";
-type CheckboxProps = FormConfig;
+type SwitchProps = FormConfig;
 
-export const Checkbox = (props: CheckboxProps) => {
+export const Switch = (props: SwitchProps) => {
   return (
     <Box>
       <FormGroup row>
         <FormControlLabel
           sx={{ m: 0 }}
           control={
-            <MuiCheckbox
+            <MuiSwitch
               size={props.options.dense ? "small" : "medium"}
               color={props.options.color}
             />

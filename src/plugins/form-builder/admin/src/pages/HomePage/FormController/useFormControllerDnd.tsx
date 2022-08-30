@@ -29,6 +29,7 @@ export const useFormControllerDnd = (
     widgetRefs.current.forEach((ref, idx) => {
       Draggable.create(ref, {
         type: "x,y",
+        dragClickables: true,
         onPress() {
           lastPos[idx] = { x: this.x, y: this.y };
         },

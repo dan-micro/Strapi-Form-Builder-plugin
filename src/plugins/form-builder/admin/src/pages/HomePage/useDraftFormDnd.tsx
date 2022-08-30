@@ -28,6 +28,7 @@ export const useDraftFormDnd = () => {
       }
       Draggable.create(ref, {
         type: "x,y",
+        dragClickables: false,
         onPress() {
           lastPos[idx] = { x: this.x, y: this.y };
         },

@@ -2,7 +2,7 @@ import { useAtom } from "jotai";
 import React, { useState } from "react";
 import { formBuildModalAtom, FormConfig, formConfigAtom } from "../store";
 import { Button } from "./DraftForm/Button";
-import { Checkbox } from "./DraftForm/Checkbox";
+import { Switch } from "./DraftForm/Switch";
 import { File } from "./DraftForm/File";
 import { Select } from "./DraftForm/Select";
 import { TextInput } from "./DraftForm/TextInput";
@@ -13,11 +13,11 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useUpdateAtom } from "jotai/utils";
 
 const widgetTypeToWidgetCmp = {
-  2: TextInput,
-  3: Select,
-  4: Checkbox,
-  5: Button,
-  6: File,
+  input: TextInput,
+  select: Select,
+  toggle: Switch,
+  button: Button,
+  fileUpload: File,
 };
 
 interface DraftFormProps {
@@ -56,7 +56,7 @@ export const DraftForm = (props: DraftFormProps) => {
   return (
     <Stack gap={2} sx={{ p: 2 }}>
       {formConfig.map((conf, idx) => {
-        const WidgetCmp = widgetTypeToWidgetCmp[conf.widgetType];
+        const WidgetCmp = widgetTypeToWidgetCmp[conf.interfaceComponent];
         return (
           <Stack
             key={idx}
