@@ -49,6 +49,7 @@ export const DraftForm = (props: DraftFormProps) => {
       mode: "edit",
       interfaceComponent: conf.interfaceComponent,
       predefinedValues: conf.options,
+      title: conf.title,
       idx: idx,
     });
   };

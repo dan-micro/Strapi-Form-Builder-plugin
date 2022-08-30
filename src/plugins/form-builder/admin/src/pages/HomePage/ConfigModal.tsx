@@ -11,7 +11,7 @@ import { isEmpty, reverse, sortBy } from "lodash-es";
 import React, { useState } from "react";
 import { getWidgetsTypes } from "../../api/widgets/getWidgetsTypes";
 import { LoadingData } from "../../components/LoadingData/LoadingData";
-import { Header } from "./ConfigModal/Title";
+import { Header } from "./ConfigModal/Header";
 import { WidgetTypeOption } from "./ConfigModal/WidgetTypeOption";
 import { controlElementsConfig } from "./FormController/controlElementsConfig";
 import { formBuildModalAtom, formConfigAtom } from "./store";
@@ -20,7 +20,7 @@ export const ConfigModal = () => {
   const [formBuildModal, setFormBuildModal] = useAtom(formBuildModalAtom);
   const [formConfig, setFormConfig] = useAtom(formConfigAtom);
   const [options, setOptions] = useState<Record<string, any>>({});
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState<string | undefined>(undefined);
 
   const { data, isLoading, error } = useQuery(["getWidgetsTypes"], () =>
     getWidgetsTypes()
@@ -54,7 +54,7 @@ export const ConfigModal = () => {
           name: widgetTypeOptions.attributes.name,
           interfaceComponent: widgetTypeOptions.attributes.interfaceComponent,
           options,
-          title,
+          title: title ?? "",
         },
       ])
     );
@@ -78,9 +78,7 @@ export const ConfigModal = () => {
       const newFormElementConfig = {
         interfaceComponent: formBuildModal.interfaceComponent!!,
         name: preFormElementConfig.name,
-        title: isEmpty(formBuildModal.title)
-          ? preFormElementConfig.title
-          : formBuildModal.title ?? "",
+        title: title ?? formBuildModal.title ?? "",
         widgetType: preFormElementConfig.widgetType,
         options: {
           ...(formBuildModal.predefinedValues ?? {}),
@@ -96,7 +94,13 @@ export const ConfigModal = () => {
 
   return (
     <Dialog fullWidth maxWidth="md" open onClose={closeHandler}>
-      <Header onClose={closeHandler} icon={widgetMetaData?.icon!}>
+      <Header
+        onClose={closeHandler}
+        icon={widgetMetaData?.icon!}
+        title={title}
+        titleDefaultValue={formBuildModal.title}
+        onTitleChange={setTitle}
+      >
         {widgetMetaData?.label}
       </Header>
       <DialogContent dividers>
