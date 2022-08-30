@@ -21,7 +21,7 @@ export const useDraftFormDnd = () => {
       return;
     }
     const lastPos = {};
-
+    let prevColor;
     compact(formFieldsRef.current).forEach((ref, idx) => {
       if (Draggable.get(ref)) {
         return;
@@ -34,15 +34,16 @@ export const useDraftFormDnd = () => {
         },
         onDrag() {
           compact(formFieldsRef.current).forEach((_ref, _idx) => {
+            prevColor = _ref.style.getPropertyValue("background");
             _ref.style.setProperty(
               "background",
-              this.hitTest(_ref, "50%") ? "#e6e4e4" : "unset"
+              this.hitTest(_ref, "50%") ? "#e6e4e4" : prevColor
             );
           });
         },
         onDragEnd() {
           compact(formFieldsRef.current).forEach((_ref, _idx) => {
-            _ref.style.setProperty("background", "unset");
+            _ref.style.setProperty("background", prevColor);
             if (this.hitTest(_ref, "50%")) {
               setFormConfig((prev) => swapArrayLocs(prev, _idx, idx));
             }

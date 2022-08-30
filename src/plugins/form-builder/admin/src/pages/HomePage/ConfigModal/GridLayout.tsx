@@ -1,0 +1,68 @@
+import {
+  Box,
+  IconButton,
+  MenuItem,
+  Paper,
+  Select,
+  Stack,
+  Typography,
+} from "@mui/material";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import React, { useState } from "react";
+import { sum } from "lodash-es";
+const GRID_COLUMNS_CONVENTION = 12;
+const SelectColumnBox = ({ disabled, onSelect }) => {
+  return (
+    <Select
+      sx={{ width: "80%" }}
+      value={""}
+      disabled={disabled}
+      onChange={(e) => onSelect(e.target.value)}
+    >
+      {new Array(GRID_COLUMNS_CONVENTION).fill("").map((_, idx) => (
+        <MenuItem value={idx + 1}>{idx + 1}</MenuItem>
+      ))}
+    </Select>
+  );
+};
+interface GridLayoutProps {
+  columns: number[];
+  onChange: (columns: number[]) => void;
+}
+export const GridLayout = ({ columns, onChange }: GridLayoutProps) => {
+  const selectHandler = (val: number) => onChange([...columns, val]);
+  const deleteColumnHandler = (idx) => {
+    const newColumns = [...columns];
+    newColumns.splice(idx, 1);
+    onChange(newColumns);
+  };
+
+  return (
+    <Stack gap={2}>
+      {columns.map((colSize, idx) => (
+        <Paper sx={{ p: 2 }}>
+          <Stack direction="row" justifyContent="space-between">
+            <Typography variant="h6">
+              Column {idx + 1} -- Size: {colSize}
+            </Typography>
+            <IconButton color="error" onClick={() => deleteColumnHandler(idx)}>
+              <RemoveCircleOutlineIcon />
+            </IconButton>
+          </Stack>
+        </Paper>
+      ))}
+      <Stack
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        gap={2}
+      >
+        <Typography>Select Column Size:</Typography>
+        <SelectColumnBox
+          disabled={sum(columns) >= GRID_COLUMNS_CONVENTION}
+          onSelect={selectHandler}
+        />
+      </Stack>
+    </Stack>
+  );
+};

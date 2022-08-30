@@ -42,7 +42,7 @@ export const TextInput = (props: TextInputProps) => {
   );
 
   return (
-    <FormControl>
+    <FormControl sx={{ width: "100%" }}>
       <TextField
         variant={
           props.options.filled

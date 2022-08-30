@@ -2,9 +2,9 @@ import { compact, isEmpty } from "lodash-es";
 import { useRef, useEffect, RefObject, MutableRefObject } from "react";
 import Draggable from "gsap/dist/Draggable";
 import gsap from "gsap";
-import { formBuildModalAtom } from "../store";
+import { FormBuildModal, formBuildModalAtom, formConfigAtom } from "../store";
 import { useUpdateAtom } from "jotai/utils";
-
+import { useAtomValue } from "jotai";
 export const useFormControllerDnd = (
   dropRef: RefObject<HTMLDivElement>,
   formFieldsRef: MutableRefObject<HTMLDivElement[]>,
@@ -14,6 +14,7 @@ export const useFormControllerDnd = (
   addWidgetRefToWidgetsRefs: (ref: HTMLDivElement) => void;
 } => {
   const setFormBuildModal = useUpdateAtom(formBuildModalAtom);
+  const formConfig = useAtomValue(formConfigAtom);
   const widgetRefs = useRef<HTMLDivElement[]>([]);
   const addWidgetRefToWidgetsRefs = (ref: HTMLDivElement) => {
     if (widgetRefs.current.every((widgetRef) => widgetRef !== ref)) {
@@ -35,12 +36,21 @@ export const useFormControllerDnd = (
         },
         onDragEnd() {
           if (dropRef && this.hitTest(dropRef.current)) {
-            // for next iterations
-            // compact(formFieldsRef.current).forEach((formField) => {
-            //   if (this.hitTest(formField)) {
-            //   }
-            // });
-            setFormBuildModal({ mode: "create", interfaceComponent: ref.id });
+            let newFormModalConfig: FormBuildModal = {
+              mode: "create",
+              interfaceComponent: ref.id,
+            };
+            compact(formFieldsRef.current).forEach((formField) => {
+              if (this.hitTest(formField)) {
+                newFormModalConfig = {
+                  mode: "create",
+                  interfaceComponent: ref.id,
+                  idx: formField.id,
+                };
+                return;
+              }
+            });
+            setFormBuildModal(newFormModalConfig);
           }
 
           const tl = gsap.timeline();

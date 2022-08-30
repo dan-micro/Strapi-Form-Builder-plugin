@@ -31,4 +31,9 @@ export const controlElementsConfig: ControlElement[] = [
     icon: <SmartButtonIcon />,
   },
   { name: "fileUpload", label: "File", icon: <FilePresentIcon /> },
+  {
+    name: "grid",
+    label: "Columns",
+    icon: <ViewQuiltIcon />,
+  },
 ];

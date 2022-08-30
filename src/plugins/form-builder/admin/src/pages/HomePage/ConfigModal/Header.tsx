@@ -4,11 +4,8 @@ import CloseIcon from "@mui/icons-material/Close";
 
 export interface DialogTitleProps {
   children?: React.ReactNode;
-  titleDefaultValue?: string;
-  title?: string;
   onClose: () => void;
   icon: ReactElement;
-  onTitleChange: (title: string) => void;
 }
 
 export const Header = (props: DialogTitleProps) => {
@@ -26,15 +23,7 @@ export const Header = (props: DialogTitleProps) => {
         {props.icon}
       </Box>
       {props.children}
-      <TextField
-        label="title"
-        sx={{ ml: 5 }}
-        size="small"
-        variant="outlined"
-        defaultValue={props.titleDefaultValue}
-        value={props.title}
-        onChange={(e) => props.onTitleChange(e.target.value)}
-      ></TextField>
+
       {props.onClose ? (
         <IconButton
           aria-label="close"

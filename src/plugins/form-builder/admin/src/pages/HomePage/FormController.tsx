@@ -14,8 +14,12 @@ interface FormControllerProps {
 }
 
 export const FormController = (props: FormControllerProps) => {
-  const { data, isLoading, error } = useQuery(["getWidgetsTypes"], () =>
-    getWidgetsTypes()
+  const { data, isLoading, error } = useQuery(
+    ["getWidgetsTypes"],
+    () => getWidgetsTypes(),
+    {
+      select: (d) => d.concat([{ attributes: { interfaceComponent: "grid" } }]),
+    }
   );
   const controlElementsConfigToName = groupBy(controlElementsConfig, "name");
   const { addWidgetRefToWidgetsRefs } = useFormControllerDnd(
