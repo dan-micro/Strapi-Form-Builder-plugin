@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useAtom } from "jotai";
-import { cloneDeep, reverse, sortBy } from "lodash-es";
+import { cloneDeep, remove, reverse, sortBy } from "lodash-es";
 import { getWidgetsTypes } from "../../../api/widgets/getWidgetsTypes";
 import { controlElementsConfig } from "../FormController/controlElementsConfig";
 import { formBuildModalAtom, FormConfig, formConfigAtom } from "../store";
@@ -27,7 +27,7 @@ export const useConfigFormModal = () => {
         widgetTypeOptions.attributes.widgetTypeOptions.data,
         (d) => d.attributes.type
       )
-    );
+    ).filter((d) => d.attributes.name !== "gridColumn");
 
   const widgetMetaData = controlElementsConfig.find(
     (cec) => cec.name === formBuildModal?.interfaceComponent

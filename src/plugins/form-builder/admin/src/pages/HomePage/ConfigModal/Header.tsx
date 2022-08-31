@@ -1,4 +1,4 @@
-import { Box, DialogTitle, IconButton, TextField } from "@mui/material";
+import { Box, DialogTitle, IconButton, Stack, TextField } from "@mui/material";
 import React, { ReactElement } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -19,9 +19,9 @@ export const Header = (props: DialogTitleProps) => {
         alignItems: "center",
       }}
     >
-      <Box component="span" sx={{ px: 1 }}>
+      <Stack alignItems="center" component="span" sx={{ px: 1 }}>
         {props.icon}
-      </Box>
+      </Stack>
       {props.children}
 
       {props.onClose ? (
