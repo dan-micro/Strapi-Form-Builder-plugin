@@ -21,10 +21,10 @@ export const ShowResultConfig = (props: ShowResultConfigProps) => {
   const convertedFormConfig = useMemo(
     () =>
       compact(
-        cloneDeep(formConfig).map((conf) => {
+        cloneDeep(formConfig).flatMap((conf) => {
           if (conf.interfaceComponent === "grid") {
             const rowElementsConfig = compact(
-              conf.options.columns.map((column) => {
+              conf.options.columns.flatMap((column) => {
                 if (isArray(column)) {
                   const elementConfig = column[1];
                   const elementColumnSize = column[0];
@@ -45,6 +45,7 @@ export const ShowResultConfig = (props: ShowResultConfigProps) => {
     [formConfig]
   );
 
+  console.log("==> convertedFormConfig ==>", convertedFormConfig);
   return (
     <Stack>
       <Dialog open={true} onClose={props.onClose} fullWidth>
