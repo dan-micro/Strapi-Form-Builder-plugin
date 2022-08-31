@@ -18,7 +18,11 @@ export const Grid = (props: GridProps) => {
           const WidgetCmp = widgetTypeToWidgetCmp[cmpProps.interfaceComponent];
           return (
             <MuiGrid
-              sx={{ p: 2, background: "#747272", "&>*": { width: "100%" } }}
+              sx={{
+                p: 2,
+                background: "rgb(240,240,255)",
+                "&>*": { width: "100%" },
+              }}
               ref={props.draggableRefs}
               id={props.idx + "_" + idx}
               item
@@ -33,10 +37,10 @@ export const Grid = (props: GridProps) => {
           <MuiGrid
             sx={{
               p: 2,
-              background: "#747272",
-              color: "#fff",
+              background: "rgb(240,240,255)",
+              color: "#000000",
               "&:not(&:last-child)": {
-                borderRight: "3px solid #fff",
+                borderRight: "3px solid #000000",
               },
             }}
             ref={props.draggableRefs}
