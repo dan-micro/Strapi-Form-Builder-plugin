@@ -12,17 +12,29 @@ import { sum } from "lodash-es";
 
 const GRID_COLUMNS_CONVENTION = 12;
 
-const SelectColumnBox = ({ disabled, onSelect }) => {
+interface SelectColumnBoxProps {
+  disabled: boolean;
+  onSelect: (val: number) => void;
+  columns: number[];
+}
+
+const SelectColumnBox = ({
+  disabled,
+  onSelect,
+  columns,
+}: SelectColumnBoxProps) => {
   return (
     <Select
       sx={{ width: "80%" }}
       value={""}
       disabled={disabled}
-      onChange={(e) => onSelect(e.target.value)}
+      onChange={(e) => onSelect(+e.target.value)}
     >
-      {new Array(GRID_COLUMNS_CONVENTION).fill("").map((_, idx) => (
-        <MenuItem value={idx + 1}>{idx + 1}</MenuItem>
-      ))}
+      {new Array(GRID_COLUMNS_CONVENTION - sum(columns))
+        .fill("")
+        .map((_, idx) => (
+          <MenuItem value={idx + 1}>{idx + 1}</MenuItem>
+        ))}
     </Select>
   );
 };
@@ -62,6 +74,7 @@ export const GridLayout = ({ columns, onChange }: GridLayoutProps) => {
         <Typography>Select Column Size:</Typography>
         <SelectColumnBox
           disabled={sum(columns) >= GRID_COLUMNS_CONVENTION}
+          columns={columns}
           onSelect={selectHandler}
         />
       </Stack>
