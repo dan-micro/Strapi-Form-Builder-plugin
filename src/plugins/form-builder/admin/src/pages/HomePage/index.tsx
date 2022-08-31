@@ -13,14 +13,18 @@ import { ShowResultConfig } from "./ShowResultConfig";
 const HomePage = () => {
   const dropRef = useRef<HTMLDivElement>(null);
   const formBuildModal = useAtomValue(formBuildModalAtom);
-  const { addFormFields, formFieldsRef } = useDraftFormDnd();
+  const { addFormFields, formFieldsRef, addDragFields } = useDraftFormDnd();
   const [open, setOpen] = useState(false);
   const closeHandler = () => setOpen(false);
   const openHandler = () => setOpen(true);
   return (
     <>
       <Stack flexWrap="wrap" direction="row" gap={2} sx={{ pt: 10, px: 3 }}>
-        <FormPlayground ref={dropRef} addFormFields={addFormFields} />
+        <FormPlayground
+          ref={dropRef}
+          addFormFields={addFormFields}
+          addDragFields={addDragFields}
+        />
         <FormController dropRef={dropRef} formFieldsRef={formFieldsRef} />
         {!isEmpty(formBuildModal) && <ConfigModal />}
       </Stack>

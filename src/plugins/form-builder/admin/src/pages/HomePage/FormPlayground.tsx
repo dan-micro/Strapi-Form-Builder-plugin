@@ -7,10 +7,11 @@ import { DraftForm } from "./FormPlayground/DraftForm";
 import FormatOverlineIcon from "@mui/icons-material/FormatOverline";
 interface FormPlaygroundProps {
   addFormFields: (ref: HTMLDivElement) => void;
+  addDragFields: (ref: HTMLDivElement) => void;
 }
 
 export const FormPlayground = forwardRef<HTMLDivElement, FormPlaygroundProps>(
-  ({ addFormFields }, ref) => {
+  ({ addFormFields, addDragFields }, ref) => {
     const formConfig = useAtomValue(formConfigAtom);
     return (
       <Box
@@ -44,7 +45,10 @@ export const FormPlayground = forwardRef<HTMLDivElement, FormPlaygroundProps>(
             </Typography>
           </Stack>
         ) : (
-          <DraftForm addFormFields={addFormFields} />
+          <DraftForm
+            addFormFields={addFormFields}
+            addDragFields={addDragFields}
+          />
         )}
       </Box>
     );

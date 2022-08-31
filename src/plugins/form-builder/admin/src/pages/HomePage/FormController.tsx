@@ -39,12 +39,14 @@ export const FormController = (props: FormControllerProps) => {
               const elementConfig = controlElementsConfigToName[widgetName][0];
               return (
                 <Grid
+                  sx={{
+                    minWidth: "max-content",
+                  }}
                   key={widgetName + idx}
                   id={widgetName}
                   ref={addWidgetRefToWidgetsRefs}
                   item
                   xs
-                  sx={{ minWidth: "max-content" }}
                 >
                   <Paper
                     sx={{

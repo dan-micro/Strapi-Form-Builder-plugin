@@ -2,6 +2,7 @@ import React from "react";
 import {
   FormControl,
   FormHelperText,
+  InputLabel,
   MenuItem,
   Select as MuiSelect,
   Stack,
@@ -22,8 +23,9 @@ const colorOptions = [
 export const Select = (props: SelectProps) => {
   return (
     <FormControl>
+      <InputLabel id={props.options.label}>{props.options.label}</InputLabel>
       <MuiSelect
-        label={props.options.label}
+        labelId={props.options.label}
         size={props.options.dense ? "small" : "medium"}
         variant={
           props.options.filled

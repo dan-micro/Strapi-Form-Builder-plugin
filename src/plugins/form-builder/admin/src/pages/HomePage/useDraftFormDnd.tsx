@@ -9,6 +9,7 @@ import { useAtom } from "jotai";
 export const useDraftFormDnd = () => {
   const [formConfig, setFormConfig] = useAtom(formConfigAtom);
   const formFieldsRef = useRef<HTMLDivElement[]>([]);
+  const dragFields = useRef<HTMLDivElement[]>([]);
 
   const addFormFields = (ref: HTMLDivElement) => {
     if (formFieldsRef.current.every((widgetRef) => widgetRef !== ref)) {
@@ -16,13 +17,19 @@ export const useDraftFormDnd = () => {
     }
   };
 
+  const addDragFields = (ref: HTMLDivElement) => {
+    if (dragFields.current.every((widgetRef) => widgetRef !== ref)) {
+      dragFields.current.push(ref);
+    }
+  };
+
   useEffect(() => {
-    if (isEmpty(formFieldsRef.current)) {
+    if (isEmpty(dragFields.current)) {
       return;
     }
     const lastPos = {};
     let prevColor;
-    compact(formFieldsRef.current).forEach((ref, idx) => {
+    compact(dragFields.current).forEach((ref, idx) => {
       if (Draggable.get(ref)) {
         return;
       }
@@ -33,7 +40,7 @@ export const useDraftFormDnd = () => {
           lastPos[idx] = { x: this.x, y: this.y };
         },
         onDrag() {
-          compact(formFieldsRef.current).forEach((_ref, _idx) => {
+          compact(dragFields.current).forEach((_ref, _idx) => {
             // prevColor = _ref.style.getPropertyValue("background");
             // _ref.style.setProperty(
             //   "background",
@@ -42,7 +49,7 @@ export const useDraftFormDnd = () => {
           });
         },
         onDragEnd() {
-          compact(formFieldsRef.current).forEach((_ref, _idx) => {
+          compact(dragFields.current).forEach((_ref, _idx) => {
             // _ref.style.setProperty("background", prevColor);
             if (this.hitTest(_ref, "50%")) {
               setFormConfig((prev) => swapArrayLocs(prev, _idx, idx));
@@ -56,6 +63,7 @@ export const useDraftFormDnd = () => {
 
   return {
     formFieldsRef,
+    addDragFields,
     addFormFields,
   };
 };

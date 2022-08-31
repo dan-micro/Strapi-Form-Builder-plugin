@@ -20,7 +20,7 @@ export const Grid = (props: GridProps) => {
             <MuiGrid
               sx={{
                 p: 2,
-                background: "rgb(240,240,255)",
+                // background: "rgb(240,240,255)",
                 "&>*": { width: "100%" },
               }}
               ref={props.draggableRefs}
