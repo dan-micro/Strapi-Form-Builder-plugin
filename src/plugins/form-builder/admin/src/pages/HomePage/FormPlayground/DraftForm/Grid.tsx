@@ -3,8 +3,11 @@ import { isNumber } from "lodash-es";
 import { Grid as MuiGrid, Typography } from "@mui/material";
 import { FormConfig } from "../../store";
 import { widgetTypeToWidgetCmp } from "./widgetTypeToWidgetCmp";
-const Grid_Gap = 0.1;
+
+const Grid_Gap = 0;
+
 type GridProps = FormConfig;
+
 export const Grid = (props: GridProps) => {
   return (
     <MuiGrid container gap={Grid_Gap}>
@@ -28,13 +31,20 @@ export const Grid = (props: GridProps) => {
 
         return (
           <MuiGrid
-            sx={{ p: 2, background: "#747272" }}
+            sx={{
+              p: 2,
+              background: "#747272",
+              color: "#fff",
+              "&:not(&:last-child)": {
+                borderRight: "3px solid #fff",
+              },
+            }}
             ref={props.draggableRefs}
             id={props.idx + "_" + idx}
             item
             sm={val - Grid_Gap}
           >
-            <Typography textAlign="center">[ Column Size - {val}]</Typography>
+            <Typography textAlign="center">[Size - {val}]</Typography>
           </MuiGrid>
         );
       })}
