@@ -2,7 +2,7 @@ import { useAtomValue } from "jotai";
 import React, { useState } from "react";
 import { formConfigAtom } from "../store";
 
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { DraftFormControllers } from "./DraftForm/DraftFormControllers";
 import { widgetTypeToWidgetCmp } from "./DraftForm/widgetTypeToWidgetCmp";
 
@@ -48,6 +48,8 @@ export const DraftForm = (props: DraftFormProps) => {
           </Stack>
         );
       })}
+      {/* Placeholder */}
+      <Box sx={{ height: "100px" }}></Box>
     </Stack>
   );
 };
