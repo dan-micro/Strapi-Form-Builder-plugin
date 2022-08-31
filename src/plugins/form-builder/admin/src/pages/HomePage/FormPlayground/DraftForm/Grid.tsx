@@ -13,7 +13,6 @@ export const Grid = (props: GridProps) => {
           const gridSize = +val[0];
           const cmpProps = val[1];
           const WidgetCmp = widgetTypeToWidgetCmp[cmpProps.interfaceComponent];
-          console.log("==> gridSize ==>", gridSize);
           return (
             <MuiGrid
               sx={{ p: 2, background: "red", "&>*": { width: "100%" } }}
@@ -26,6 +25,7 @@ export const Grid = (props: GridProps) => {
             </MuiGrid>
           );
         }
+
         return (
           <MuiGrid
             sx={{ p: 2, background: "red" }}

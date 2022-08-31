@@ -5,18 +5,20 @@ export const addNewFormConfig = (
   newElementConfig: FormConfig,
   path?: string
 ) => {
+  const _formConfigs = [...formConfigs];
   if (!path) {
-    return formConfigs.concat([newElementConfig]);
+    return _formConfigs.concat([newElementConfig]);
   }
 
-  const _formConfigs = [...formConfigs];
   const pathArr = path.split("_");
   let elementConfig = newElementConfig;
 
   if (path.length > 1) {
-    elementConfig = { ...formConfigs[pathArr[0]] };
-    elementConfig.options.columns[pathArr[1]] = [
-      elementConfig.options.columns[0],
+    const formConfigIndex = pathArr[0];
+    const gridColumnIndex = pathArr[1];
+    elementConfig = { ..._formConfigs[formConfigIndex] };
+    elementConfig.options.columns[gridColumnIndex] = [
+      elementConfig.options.columns[gridColumnIndex],
       newElementConfig,
     ];
   }

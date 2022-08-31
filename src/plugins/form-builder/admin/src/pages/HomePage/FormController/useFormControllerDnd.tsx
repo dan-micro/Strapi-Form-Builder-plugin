@@ -39,9 +39,11 @@ export const useFormControllerDnd = (
             let newFormModalConfig: FormBuildModal = {
               mode: "create",
               interfaceComponent: ref.id,
+              idx: String(formConfig.length),
             };
             compact(formFieldsRef.current).forEach((formField) => {
               if (this.hitTest(formField)) {
+                console.log("==> formField,ref ==>", formField, ref);
                 newFormModalConfig = {
                   mode: "create",
                   interfaceComponent: ref.id,
@@ -50,6 +52,7 @@ export const useFormControllerDnd = (
                 return;
               }
             });
+            console.log("==> newFormModalConfig ==>", newFormModalConfig);
             setFormBuildModal(newFormModalConfig);
           }
 

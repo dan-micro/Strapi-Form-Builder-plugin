@@ -6,7 +6,8 @@ import { getWidgetsTypes } from "../../../api/widgets/getWidgetsTypes";
 import { controlElementsConfig } from "../FormController/controlElementsConfig";
 import { formBuildModalAtom, FormConfig, formConfigAtom } from "../store";
 import { addNewFormConfig } from "./addNewFormConfig";
-export const useConfigFormModal = (title?: string) => {
+
+export const useConfigFormModal = () => {
   const [options, setOptions] = useState<Record<string, any>>({});
   const [formConfig, setFormConfig] = useAtom(formConfigAtom);
   const [formBuildModal, setFormBuildModal] = useAtom(formBuildModalAtom);
@@ -34,7 +35,7 @@ export const useConfigFormModal = (title?: string) => {
 
   const closeHandler = () => setFormBuildModal({});
 
-  const addHandler = () => {
+  const addHandler = (title) => {
     const newElementConfig: FormConfig =
       formBuildModal.interfaceComponent === "grid"
         ? {
@@ -61,7 +62,7 @@ export const useConfigFormModal = (title?: string) => {
     setOptions((prev) => ({ ...prev, [name]: val }));
   };
 
-  const editHandler = () => {
+  const editHandler = (title) => {
     setFormConfig((prev) => {
       const newPrev = [...prev];
       const configIdx = formBuildModal.idx!;
@@ -89,6 +90,7 @@ export const useConfigFormModal = (title?: string) => {
       columns,
     }));
   };
+
   return {
     gridLayoutChangeHandler,
     options,

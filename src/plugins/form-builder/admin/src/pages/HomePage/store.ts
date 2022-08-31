@@ -16,7 +16,7 @@ export interface FormBuildModal {
   interfaceComponent: string;
   predefinedValues?: Record<string, any>;
   title?: string;
-  idx?: string;
+  idx: string;
 }
 
 export const formBuildModalAtom = atom<Partial<FormBuildModal>>({});
