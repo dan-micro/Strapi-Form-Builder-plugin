@@ -29,7 +29,7 @@ export const FormController = (props: FormControllerProps) => {
   );
 
   return (
-    <Paper elevation={3} sx={{ p: 2, flexBasis: "20%" }}>
+    <Paper elevation={3} sx={{ p: 2, flexBasis: "20%", height: "fit-content" }}>
       <Search />
       <LoadingData loading={isLoading} error={error}>
         {() => (
