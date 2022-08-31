@@ -4,9 +4,16 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import React from "react";
 import { useUpdateAtom } from "jotai/utils";
-import { formBuildModalAtom, formConfigAtom } from "../../store";
+import { formBuildModalAtom, FormConfig, formConfigAtom } from "../../store";
 
-export const DraftFormControllers = ({ config, position }) => {
+interface DraftFormControllersProps {
+  config: FormConfig;
+  position: number;
+}
+export const DraftFormControllers = ({
+  config,
+  position,
+}: DraftFormControllersProps) => {
   const setFormConfig = useUpdateAtom(formConfigAtom);
   const setFormBuildModal = useUpdateAtom(formBuildModalAtom);
 
@@ -32,7 +39,7 @@ export const DraftFormControllers = ({ config, position }) => {
       interfaceComponent: config.interfaceComponent,
       predefinedValues: config.options,
       title: config.title,
-      idx: position,
+      idx: String(position),
     });
   };
 

@@ -13,8 +13,6 @@ export const DraftForm = (props: DraftFormProps) => {
   const formConfig = useAtomValue(formConfigAtom);
   const [hover, setHover] = useState<number | undefined>(undefined);
 
-  // console.log("==> formConfig ==>", formConfig);
-
   return (
     <Stack gap={2} sx={{ p: 2 }}>
       {formConfig.map((conf, idx) => {

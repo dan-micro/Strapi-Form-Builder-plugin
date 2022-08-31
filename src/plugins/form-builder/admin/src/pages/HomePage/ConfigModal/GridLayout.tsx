@@ -1,5 +1,4 @@
 import {
-  Box,
   IconButton,
   MenuItem,
   Paper,
@@ -8,9 +7,11 @@ import {
   Typography,
 } from "@mui/material";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import React, { useState } from "react";
+import React from "react";
 import { sum } from "lodash-es";
+
 const GRID_COLUMNS_CONVENTION = 12;
+
 const SelectColumnBox = ({ disabled, onSelect }) => {
   return (
     <Select
@@ -38,7 +39,7 @@ export const GridLayout = ({ columns, onChange }: GridLayoutProps) => {
   };
 
   return (
-    <Stack gap={2}>
+    <Stack gap={2} sx={{ pt: 2 }}>
       {columns.map((colSize, idx) => (
         <Paper sx={{ p: 2 }}>
           <Stack direction="row" justifyContent="space-between">
@@ -56,6 +57,7 @@ export const GridLayout = ({ columns, onChange }: GridLayoutProps) => {
         justifyContent="center"
         alignItems="center"
         gap={2}
+        sx={{ py: 3 }}
       >
         <Typography>Select Column Size:</Typography>
         <SelectColumnBox

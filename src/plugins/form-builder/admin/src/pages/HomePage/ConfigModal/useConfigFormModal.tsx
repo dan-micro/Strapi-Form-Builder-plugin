@@ -72,6 +72,7 @@ export const useConfigFormModal = () => {
     setFormConfig((prev) => {
       const newPrev = [...prev];
       const configIdx = formBuildModal.idx!;
+      console.log("==> formBuildModal ==>", formBuildModal);
       const preFormElementConfig = newPrev[configIdx];
       const newFormElementConfig = {
         interfaceComponent: formBuildModal.interfaceComponent!!,

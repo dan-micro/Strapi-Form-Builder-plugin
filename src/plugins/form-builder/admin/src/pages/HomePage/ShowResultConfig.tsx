@@ -19,8 +19,6 @@ interface ShowResultConfigProps {
 export const ShowResultConfig = (props: ShowResultConfigProps) => {
   const formConfig = useAtomValue(formConfigAtom);
 
-  console.log("==> formConfig ==>", formConfig);
-
   const _formConfig = cloneDeep(formConfig);
   const result = _formConfig.map((conf) => {
     if (conf.interfaceComponent === "grid") {
@@ -41,7 +39,7 @@ export const ShowResultConfig = (props: ShowResultConfigProps) => {
     }
     return conf;
   });
-  console.log("==> result ==>", result);
+
   return (
     <Stack>
       <Dialog open={true} onClose={props.onClose} fullWidth>
