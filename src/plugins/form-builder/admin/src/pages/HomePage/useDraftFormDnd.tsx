@@ -34,16 +34,16 @@ export const useDraftFormDnd = () => {
         },
         onDrag() {
           compact(formFieldsRef.current).forEach((_ref, _idx) => {
-            prevColor = _ref.style.getPropertyValue("background");
-            _ref.style.setProperty(
-              "background",
-              this.hitTest(_ref, "50%") ? "#e6e4e4" : prevColor
-            );
+            // prevColor = _ref.style.getPropertyValue("background");
+            // _ref.style.setProperty(
+            //   "background",
+            //   this.hitTest(_ref, "50%") ? "#e6e4e4" : prevColor
+            // );
           });
         },
         onDragEnd() {
           compact(formFieldsRef.current).forEach((_ref, _idx) => {
-            _ref.style.setProperty("background", prevColor);
+            // _ref.style.setProperty("background", prevColor);
             if (this.hitTest(_ref, "50%")) {
               setFormConfig((prev) => swapArrayLocs(prev, _idx, idx));
             }

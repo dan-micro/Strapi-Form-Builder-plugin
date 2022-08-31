@@ -24,7 +24,7 @@ export const controlElementsConfig: ControlElement[] = [
     label: "Select",
     icon: <FormatListBulletedIcon />,
   },
-  { name: "toggle", label: "Check Box", icon: <ToggleOffIcon /> },
+  { name: "toggle", label: "Toggle", icon: <ToggleOffIcon /> },
   {
     name: "button",
     label: "Button",

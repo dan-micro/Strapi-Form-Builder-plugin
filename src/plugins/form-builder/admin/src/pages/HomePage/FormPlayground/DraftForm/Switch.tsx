@@ -6,6 +6,16 @@ import {
   FormControlLabel,
   FormGroup,
 } from "@mui/material";
+
+const colorOptions = [
+  "primary",
+  "secondary",
+  "error",
+  "info",
+  "success",
+  "warning",
+];
+
 type SwitchProps = FormConfig;
 
 export const Switch = (props: SwitchProps) => {
@@ -17,7 +27,11 @@ export const Switch = (props: SwitchProps) => {
           control={
             <MuiSwitch
               size={props.options.dense ? "small" : "medium"}
-              color={props.options.color}
+              color={
+                colorOptions.includes(props.options.color)
+                  ? props.options.color
+                  : "primary"
+              }
             />
           }
           label={props.options.label}
