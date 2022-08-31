@@ -1,29 +1,27 @@
+import { cloneDeep } from "lodash-es";
 import { FormConfig } from "../store";
 
 export const addNewFormConfig = (
   formConfigs: FormConfig[],
   newElementConfig: FormConfig,
-  path?: string
+  path: string
 ) => {
-  const _formConfigs = [...formConfigs];
-  if (!path) {
-    return _formConfigs.concat([newElementConfig]);
+  if (path.length === 0) {
+    return formConfigs.concat([newElementConfig]);
   }
 
   const pathArr = path.split("_");
-  let elementConfig = newElementConfig;
+  const formConfigIndex = +pathArr[0];
 
-  if (path.length > 1) {
-    const formConfigIndex = pathArr[0];
-    const gridColumnIndex = pathArr[1];
-    elementConfig = { ..._formConfigs[formConfigIndex] };
+  if (pathArr.length > 1) {
+    const gridColumnIndex = +pathArr[1];
+    const elementConfig = cloneDeep(formConfigs[formConfigIndex]);
     elementConfig.options.columns[gridColumnIndex] = [
       elementConfig.options.columns[gridColumnIndex],
       newElementConfig,
     ];
+    formConfigs.splice(formConfigIndex, 1, elementConfig);
   }
 
-  _formConfigs.splice(+pathArr[0], 1, elementConfig);
-
-  return _formConfigs;
+  return formConfigs;
 };

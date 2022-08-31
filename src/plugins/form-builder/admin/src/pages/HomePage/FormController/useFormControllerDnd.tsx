@@ -4,7 +4,7 @@ import Draggable from "gsap/dist/Draggable";
 import gsap from "gsap";
 import { FormBuildModal, formBuildModalAtom, formConfigAtom } from "../store";
 import { useUpdateAtom } from "jotai/utils";
-import { useAtomValue } from "jotai";
+
 export const useFormControllerDnd = (
   dropRef: RefObject<HTMLDivElement>,
   formFieldsRef: MutableRefObject<HTMLDivElement[]>,
@@ -14,7 +14,6 @@ export const useFormControllerDnd = (
   addWidgetRefToWidgetsRefs: (ref: HTMLDivElement) => void;
 } => {
   const setFormBuildModal = useUpdateAtom(formBuildModalAtom);
-  const formConfig = useAtomValue(formConfigAtom);
   const widgetRefs = useRef<HTMLDivElement[]>([]);
   const addWidgetRefToWidgetsRefs = (ref: HTMLDivElement) => {
     if (widgetRefs.current.every((widgetRef) => widgetRef !== ref)) {
@@ -39,7 +38,7 @@ export const useFormControllerDnd = (
             let newFormModalConfig: FormBuildModal = {
               mode: "create",
               interfaceComponent: ref.id,
-              idx: String(formConfig.length),
+              idx: "",
             };
             compact(formFieldsRef.current).forEach((formField) => {
               if (this.hitTest(formField)) {

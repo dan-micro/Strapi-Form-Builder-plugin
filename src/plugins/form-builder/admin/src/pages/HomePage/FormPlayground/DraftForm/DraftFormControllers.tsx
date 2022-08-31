@@ -19,7 +19,6 @@ export const DraftFormControllers = ({ config, position }) => {
   };
 
   const copyPastHandler = () => {
-    console.log("==> config ==>", config);
     setFormConfig((prev) => {
       const newPrev = [...prev];
       newPrev.splice(position, 0, config);
