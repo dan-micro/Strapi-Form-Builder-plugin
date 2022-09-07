@@ -1,5 +1,6 @@
-import React from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React from 'react';
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const minutes = 60 * 1000;
 
@@ -21,7 +22,5 @@ export const getReactQueryClient = (): QueryClient => {
 };
 
 export const ReactQueryProviders = ({ children }: { children: any }) => (
-  <QueryClientProvider client={createQueryClient()}>
-    {children}
-  </QueryClientProvider>
+  <QueryClientProvider client={createQueryClient()}>{children}</QueryClientProvider>
 );

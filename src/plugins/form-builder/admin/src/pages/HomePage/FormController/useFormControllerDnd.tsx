@@ -1,14 +1,16 @@
-import { compact, isEmpty } from "lodash-es";
-import { useRef, useEffect, RefObject, MutableRefObject } from "react";
-import Draggable from "gsap/dist/Draggable";
-import gsap from "gsap";
-import { FormBuildModal, formBuildModalAtom, formConfigAtom } from "../store";
-import { useUpdateAtom } from "jotai/utils";
+import { useRef, useEffect, RefObject, MutableRefObject } from 'react';
+
+import gsap from 'gsap';
+import Draggable from 'gsap/dist/Draggable';
+import { useUpdateAtom } from 'jotai/utils';
+import { compact, isEmpty } from 'lodash-es';
+
+import { FormBuildModal, formBuildModalAtom, formConfigAtom } from '../store';
 
 export const useFormControllerDnd = (
   dropRef: RefObject<HTMLDivElement>,
   formFieldsRef: MutableRefObject<HTMLDivElement[]>,
-  data: any[]
+  data: any[],
 ): {
   widgetRefs: MutableRefObject<HTMLDivElement[]>;
   addWidgetRefToWidgetsRefs: (ref: HTMLDivElement) => void;
@@ -28,7 +30,7 @@ export const useFormControllerDnd = (
     const lastPos = {};
     widgetRefs.current.forEach((ref, idx) => {
       Draggable.create(ref, {
-        type: "x,y",
+        type: 'x,y',
         dragClickables: true,
         onPress() {
           lastPos[idx] = { x: this.x, y: this.y };
@@ -36,29 +38,28 @@ export const useFormControllerDnd = (
         onDragEnd() {
           if (dropRef && this.hitTest(dropRef.current)) {
             let newFormModalConfig: FormBuildModal = {
-              mode: "create",
+              mode: 'create',
               interfaceComponent: ref.id,
-              idx: "",
+              idx: '',
             };
             compact(formFieldsRef.current).forEach((formField) => {
               if (this.hitTest(formField)) {
-                console.log("==> formField,ref ==>", formField, ref);
+                console.log('==> formField,ref ==>', formField, ref);
                 newFormModalConfig = {
-                  mode: "create",
+                  mode: 'create',
                   interfaceComponent: ref.id,
                   idx: formField.id,
                 };
-                return;
               }
             });
-            console.log("==> newFormModalConfig ==>", newFormModalConfig);
+            console.log('==> newFormModalConfig ==>', newFormModalConfig);
             setFormBuildModal(newFormModalConfig);
           }
 
           const tl = gsap.timeline();
-          tl.to(ref, { opacity: 0, display: "none" });
+          tl.to(ref, { opacity: 0, display: 'none' });
           tl.to(ref, { ...lastPos[idx] });
-          tl.to(ref, { opacity: 1, display: "block" });
+          tl.to(ref, { opacity: 1, display: 'block' });
         },
       });
     });

@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  TextField,
-} from "@mui/material";
-import { Header } from "./Header";
-import { LoadingData } from "../../../components/LoadingData/LoadingData";
-import { useAtomValue } from "jotai";
-import { formBuildModalAtom } from "../store";
+import React, { useState } from 'react';
+
+import { Button, Dialog, DialogActions, DialogContent, TextField } from '@mui/material';
+import { useAtomValue } from 'jotai';
+
+import { LoadingData } from '../../../components/LoadingData/LoadingData';
+import { formBuildModalAtom } from '../store';
+
+import { Header } from './Header';
 
 export const ConfigFormModalWrapper = ({
   children,
@@ -18,7 +15,7 @@ export const ConfigFormModalWrapper = ({
 }: {
   children: any;
   withTitle?: boolean;
-  //TODO: Add Type for Config
+  // TODO: Add Type for Config
   config: any;
 }) => {
   const [title, setTitle] = useState<string | undefined>(undefined);
@@ -51,7 +48,7 @@ export const ConfigFormModalWrapper = ({
         <Button
           variant="contained"
           color="error"
-          sx={{ textTransform: "capitalize", fontWeight: 600 }}
+          sx={{ textTransform: 'capitalize', fontWeight: 600 }}
           onClick={config.closeHandler}
         >
           cancel
@@ -59,14 +56,14 @@ export const ConfigFormModalWrapper = ({
         <Button
           variant="contained"
           color="success"
-          sx={{ textTransform: "capitalize", fontWeight: 600 }}
+          sx={{ textTransform: 'capitalize', fontWeight: 600 }}
           onClick={() =>
-            formBuildModal?.mode === "create"
+            formBuildModal?.mode === 'create'
               ? config.addHandler(title)
               : config.editHandler(title)
           }
         >
-          {formBuildModal?.mode === "create" ? "Add" : "Edit"}
+          {formBuildModal?.mode === 'create' ? 'Add' : 'Edit'}
         </Button>
       </DialogActions>
     </Dialog>

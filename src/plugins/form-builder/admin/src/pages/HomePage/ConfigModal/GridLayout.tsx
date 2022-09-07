@@ -1,14 +1,8 @@
-import {
-  IconButton,
-  MenuItem,
-  Paper,
-  Select,
-  Stack,
-  Typography,
-} from "@mui/material";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import React from "react";
-import { sum } from "lodash-es";
+import React from 'react';
+
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import { IconButton, MenuItem, Paper, Select, Stack, Typography } from '@mui/material';
+import { sum } from 'lodash-es';
 
 const GRID_COLUMNS_CONVENTION = 12;
 
@@ -18,23 +12,19 @@ interface SelectColumnBoxProps {
   columns: number[];
 }
 
-const SelectColumnBox = ({
-  disabled,
-  onSelect,
-  columns,
-}: SelectColumnBoxProps) => {
+const SelectColumnBox = ({ disabled, onSelect, columns }: SelectColumnBoxProps) => {
   return (
     <Select
-      sx={{ width: "80%" }}
-      value={""}
+      sx={{ width: '80%' }}
+      value={''}
       disabled={disabled}
       onChange={(e) => onSelect(+e.target.value)}
     >
-      {new Array(GRID_COLUMNS_CONVENTION - sum(columns))
-        .fill("")
-        .map((_, idx) => (
-          <MenuItem value={idx + 1}>{idx + 1}</MenuItem>
-        ))}
+      {new Array(GRID_COLUMNS_CONVENTION - sum(columns)).fill('').map((_, idx) => (
+        <MenuItem key={idx} value={idx + 1}>
+          {idx + 1}
+        </MenuItem>
+      ))}
     </Select>
   );
 };
@@ -53,7 +43,7 @@ export const GridLayout = ({ columns, onChange }: GridLayoutProps) => {
   return (
     <Stack gap={2} sx={{ pt: 2 }}>
       {columns.map((colSize, idx) => (
-        <Paper sx={{ p: 2 }}>
+        <Paper key={idx} sx={{ p: 2 }}>
           <Stack direction="row" justifyContent="space-between">
             <Typography variant="h6">
               Column {idx + 1} -- Size: {colSize}

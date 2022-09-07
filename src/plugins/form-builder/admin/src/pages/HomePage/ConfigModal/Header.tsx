@@ -1,6 +1,7 @@
-import { Box, DialogTitle, IconButton, Stack, TextField } from "@mui/material";
-import React, { ReactElement } from "react";
-import CloseIcon from "@mui/icons-material/Close";
+import React, { ReactElement } from 'react';
+
+import CloseIcon from '@mui/icons-material/Close';
+import { Box, DialogTitle, IconButton, Stack, TextField } from '@mui/material';
 
 export interface DialogTitleProps {
   children?: React.ReactNode;
@@ -14,9 +15,9 @@ export const Header = (props: DialogTitleProps) => {
       sx={{
         m: 0,
         p: 2,
-        display: "flex",
+        display: 'flex',
         fontWeight: 900,
-        alignItems: "center",
+        alignItems: 'center',
       }}
     >
       <Stack alignItems="center" component="span" sx={{ px: 1 }}>
@@ -29,7 +30,7 @@ export const Header = (props: DialogTitleProps) => {
           aria-label="close"
           onClick={props.onClose}
           sx={{
-            position: "absolute",
+            position: 'absolute',
             right: 8,
             top: 8,
             color: (theme) => theme.palette.grey[500],

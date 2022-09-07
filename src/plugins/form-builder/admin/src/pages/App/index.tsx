@@ -5,15 +5,18 @@
  *
  */
 
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-import { NotFound } from "@strapi/helper-plugin";
-import pluginId from "../../pluginId";
-import HomePage from "../HomePage";
-import { Providers } from "../../lib/Providers";
-import gsap from "gsap";
-import Draggable from "gsap/dist/Draggable";
-import "@fontsource/inter";
+import React from 'react';
+
+import { NotFound } from '@strapi/helper-plugin';
+import gsap from 'gsap';
+import Draggable from 'gsap/dist/Draggable';
+import { Switch, Route } from 'react-router-dom';
+
+import { Providers } from '../../lib/Providers';
+import pluginId from '../../pluginId';
+import HomePage from '../HomePage';
+
+import '@fontsource/inter';
 
 gsap.registerPlugin(Draggable);
 const App: React.VoidFunctionComponent = () => {

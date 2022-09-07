@@ -1,8 +1,8 @@
 export default {
   // ...
-  "form-builder": {
+  'form-builder': {
     enabled: true,
-    resolve: "./src/plugins/form-builder",
+    resolve: './src/plugins/form-builder',
   },
   // ...
 };

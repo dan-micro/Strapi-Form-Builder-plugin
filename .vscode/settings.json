@@ -1,10 +1,4 @@
 {
-  "cSpell.words": [
-    "autogrow",
-    "Clickables",
-    "monokai",
-    "Strapi",
-    "tanstack"
-  ],
+  "cSpell.words": ["autogrow", "Clickables", "monokai", "Strapi", "tanstack"],
   "typescript.tsdk": "node_modules/typescript/lib"
 }

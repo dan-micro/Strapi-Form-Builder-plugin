@@ -1,198 +1,198 @@
 {
-    "data": {
-        "widgetTypes": {
-            "data": [
+  "data": {
+    "widgetTypes": {
+      "data": [
+        {
+          "id": "2",
+          "attributes": {
+            "name": "Text input",
+            "interfaceComponent": "input",
+            "widgetTypeOptions": {
+              "data": [
                 {
-                    "id": "2",
-                    "attributes": {
-                        "name": "Text input",
-                        "interfaceComponent": "input",
-                        "widgetTypeOptions": {
-                            "data": [
-                                {
-                                    "id": "7"
-                                },
-                                {
-                                    "id": "5"
-                                },
-                                {
-                                    "id": "2"
-                                },
-                                {
-                                    "id": "8"
-                                },
-                                {
-                                    "id": "9"
-                                },
-                                {
-                                    "id": "10"
-                                },
-                                {
-                                    "id": "11"
-                                },
-                                {
-                                    "id": "12"
-                                },
-                                {
-                                    "id": "13"
-                                },
-                                {
-                                    "id": "4"
-                                },
-                                {
-                                    "id": "16"
-                                },
-                                {
-                                    "id": "15"
-                                },
-                                {
-                                    "id": "6"
-                                }
-                            ]
-                        }
-                    }
+                  "id": "7"
                 },
                 {
-                    "id": "3",
-                    "attributes": {
-                        "name": "Select input",
-                        "interfaceComponent": "select",
-                        "widgetTypeOptions": {
-                            "data": [
-                                {
-                                    "id": "13"
-                                },
-                                {
-                                    "id": "15"
-                                },
-                                {
-                                    "id": "16"
-                                },
-                                {
-                                    "id": "17"
-                                },
-                                {
-                                    "id": "18"
-                                },
-                                {
-                                    "id": "6"
-                                },
-                                {
-                                    "id": "2"
-                                },
-                                {
-                                    "id": "8"
-                                },
-                                {
-                                    "id": "9"
-                                },
-                                {
-                                    "id": "10"
-                                }
-                            ]
-                        }
-                    }
+                  "id": "5"
                 },
                 {
-                    "id": "4",
-                    "attributes": {
-                        "name": "Toggle input",
-                        "interfaceComponent": "toggle",
-                        "widgetTypeOptions": {
-                            "data": [
-                                {
-                                    "id": "2"
-                                },
-                                {
-                                    "id": "13"
-                                },
-                                {
-                                    "id": "6"
-                                },
-                                {
-                                    "id": "36"
-                                }
-                            ]
-                        }
-                    }
+                  "id": "2"
                 },
                 {
-                    "id": "5",
-                    "attributes": {
-                        "name": "Button",
-                        "interfaceComponent": "button",
-                        "widgetTypeOptions": {
-                            "data": [
-                                {
-                                    "id": "3"
-                                },
-                                {
-                                    "id": "2"
-                                },
-                                {
-                                    "id": "36"
-                                },
-                                {
-                                    "id": "16"
-                                },
-                                {
-                                    "id": "17"
-                                },
-                                {
-                                    "id": "18"
-                                },
-                                {
-                                    "id": "13"
-                                },
-                                {
-                                    "id": "6"
-                                }
-                            ]
-                        }
-                    }
+                  "id": "8"
                 },
                 {
-                    "id": "6",
-                    "attributes": {
-                        "name": "File upload",
-                        "interfaceComponent": "fileUpload",
-                        "widgetTypeOptions": {
-                            "data": [
-                                {
-                                    "id": "13"
-                                },
-                                {
-                                    "id": "5"
-                                },
-                                {
-                                    "id": "23"
-                                },
-                                {
-                                    "id": "15"
-                                },
-                                {
-                                    "id": "16"
-                                },
-                                {
-                                    "id": "17"
-                                },
-                                {
-                                    "id": "6"
-                                },
-                                {
-                                    "id": "25"
-                                },
-                                {
-                                    "id": "2"
-                                },
-                                {
-                                    "id": "8"
-                                }
-                            ]
-                        }
-                    }
+                  "id": "9"
+                },
+                {
+                  "id": "10"
+                },
+                {
+                  "id": "11"
+                },
+                {
+                  "id": "12"
+                },
+                {
+                  "id": "13"
+                },
+                {
+                  "id": "4"
+                },
+                {
+                  "id": "16"
+                },
+                {
+                  "id": "15"
+                },
+                {
+                  "id": "6"
                 }
-            ]
+              ]
+            }
+          }
+        },
+        {
+          "id": "3",
+          "attributes": {
+            "name": "Select input",
+            "interfaceComponent": "select",
+            "widgetTypeOptions": {
+              "data": [
+                {
+                  "id": "13"
+                },
+                {
+                  "id": "15"
+                },
+                {
+                  "id": "16"
+                },
+                {
+                  "id": "17"
+                },
+                {
+                  "id": "18"
+                },
+                {
+                  "id": "6"
+                },
+                {
+                  "id": "2"
+                },
+                {
+                  "id": "8"
+                },
+                {
+                  "id": "9"
+                },
+                {
+                  "id": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "4",
+          "attributes": {
+            "name": "Toggle input",
+            "interfaceComponent": "toggle",
+            "widgetTypeOptions": {
+              "data": [
+                {
+                  "id": "2"
+                },
+                {
+                  "id": "13"
+                },
+                {
+                  "id": "6"
+                },
+                {
+                  "id": "36"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "5",
+          "attributes": {
+            "name": "Button",
+            "interfaceComponent": "button",
+            "widgetTypeOptions": {
+              "data": [
+                {
+                  "id": "3"
+                },
+                {
+                  "id": "2"
+                },
+                {
+                  "id": "36"
+                },
+                {
+                  "id": "16"
+                },
+                {
+                  "id": "17"
+                },
+                {
+                  "id": "18"
+                },
+                {
+                  "id": "13"
+                },
+                {
+                  "id": "6"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "6",
+          "attributes": {
+            "name": "File upload",
+            "interfaceComponent": "fileUpload",
+            "widgetTypeOptions": {
+              "data": [
+                {
+                  "id": "13"
+                },
+                {
+                  "id": "5"
+                },
+                {
+                  "id": "23"
+                },
+                {
+                  "id": "15"
+                },
+                {
+                  "id": "16"
+                },
+                {
+                  "id": "17"
+                },
+                {
+                  "id": "6"
+                },
+                {
+                  "id": "25"
+                },
+                {
+                  "id": "2"
+                },
+                {
+                  "id": "8"
+                }
+              ]
+            }
+          }
         }
+      ]
     }
+  }
 }

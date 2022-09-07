@@ -1,7 +1,10 @@
-import React from "react";
-import { TextField } from "@mui/material";
-import { WidgetTypeOptionProps } from "../WidgetTypeOption";
-import { OptionWrapper } from "./OptionWrapper";
+import React from 'react';
+
+import { TextField } from '@mui/material';
+
+import { WidgetTypeOptionProps } from '../WidgetTypeOption';
+
+import { OptionWrapper } from './OptionWrapper';
 
 type StringOptionProps = WidgetTypeOptionProps;
 export const StringOption = (props: StringOptionProps) => {

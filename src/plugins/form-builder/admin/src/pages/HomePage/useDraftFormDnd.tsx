@@ -1,10 +1,13 @@
-import { compact, isEmpty } from "lodash-es";
-import { useRef, useEffect, RefObject } from "react";
-import Draggable from "gsap/dist/Draggable";
-import gsap from "gsap";
-import { swapArrayLocs } from "../../utils/swapArrayElements";
-import { formConfigAtom } from "./store";
-import { useAtom } from "jotai";
+import { useRef, useEffect, RefObject } from 'react';
+
+import gsap from 'gsap';
+import Draggable from 'gsap/dist/Draggable';
+import { useAtom } from 'jotai';
+import { compact, isEmpty } from 'lodash-es';
+
+import { swapArrayLocs } from '../../utils/swapArrayElements';
+
+import { formConfigAtom } from './store';
 
 export const useDraftFormDnd = () => {
   const [formConfig, setFormConfig] = useAtom(formConfigAtom);
@@ -34,7 +37,7 @@ export const useDraftFormDnd = () => {
         return;
       }
       Draggable.create(ref, {
-        type: "x,y",
+        type: 'x,y',
         dragClickables: false,
         onPress() {
           lastPos[idx] = { x: this.x, y: this.y };
@@ -51,7 +54,7 @@ export const useDraftFormDnd = () => {
         onDragEnd() {
           compact(dragFields.current).forEach((_ref, _idx) => {
             // _ref.style.setProperty("background", prevColor);
-            if (this.hitTest(_ref, "50%")) {
+            if (this.hitTest(_ref, '50%')) {
               setFormConfig((prev) => swapArrayLocs(prev, _idx, idx));
             }
           });

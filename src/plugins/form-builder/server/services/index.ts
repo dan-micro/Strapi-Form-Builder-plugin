@@ -1,5 +1,6 @@
-import myService from "./my-service";
-import widgets from "./widgets";
+import myService from './my-service';
+import widgets from './widgets';
+
 export default {
   myService,
   widgets,

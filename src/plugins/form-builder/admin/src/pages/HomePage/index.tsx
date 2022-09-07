@@ -1,14 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react';
 
-import { FormPlayground } from "./FormPlayground";
-import { FormController } from "./FormController";
-import { Button, Stack } from "@mui/material";
-import { formBuildModalAtom } from "./store";
-import { useAtomValue } from "jotai";
-import { ConfigModal } from "./ConfigModal";
-import { isEmpty } from "lodash-es";
-import { useDraftFormDnd } from "./useDraftFormDnd";
-import { ShowResultConfig } from "./ShowResultConfig";
+import { Button, Stack } from '@mui/material';
+import { useAtomValue } from 'jotai';
+import { isEmpty } from 'lodash-es';
+
+import { ConfigModal } from './ConfigModal';
+import { FormController } from './FormController';
+import { FormPlayground } from './FormPlayground';
+import { ShowResultConfig } from './ShowResultConfig';
+import { formBuildModalAtom } from './store';
+import { useDraftFormDnd } from './useDraftFormDnd';
 
 const HomePage = () => {
   const dropRef = useRef<HTMLDivElement>(null);
@@ -32,9 +33,9 @@ const HomePage = () => {
         variant="contained"
         onClick={openHandler}
         sx={{
-          width: "10rem",
-          textTransform: "capitalize",
-          fontWeight: "bold",
+          width: '10rem',
+          textTransform: 'capitalize',
+          fontWeight: 'bold',
           my: 2,
           mx: 5,
         }}

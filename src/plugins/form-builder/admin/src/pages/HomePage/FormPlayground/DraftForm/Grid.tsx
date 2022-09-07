@@ -1,32 +1,37 @@
-import React from "react";
-import { isNumber } from "lodash-es";
-import { Grid as MuiGrid, Typography } from "@mui/material";
-import { FormConfig } from "../../store";
-import { widgetTypeToWidgetCmp } from "./widgetTypeToWidgetCmp";
+import React from 'react';
 
-const Grid_Gap = 0;
+import { Grid as MuiGrid, Typography } from '@mui/material';
+import { isNumber } from 'lodash-es';
+
+import { FormConfig } from '../../store';
+
+import { widgetTypeToWidgetCmp } from './widgetTypeToWidgetCmp';
+
+const gridGap = 0;
 
 type GridProps = FormConfig;
 
 export const Grid = (props: GridProps) => {
   return (
-    <MuiGrid container gap={Grid_Gap}>
+    <MuiGrid container gap={gridGap}>
       {props.options.columns.map((val, idx) => {
         if (!isNumber(val)) {
           const gridSize = +val[0];
           const cmpProps = val[1];
           const WidgetCmp = widgetTypeToWidgetCmp[cmpProps.interfaceComponent];
+          const id = `${props.idx}_${idx}`;
           return (
             <MuiGrid
+              key={id}
               sx={{
                 p: 2,
                 // background: "rgb(240,240,255)",
-                "&>*": { width: "100%" },
+                '&>*': { width: '100%' },
               }}
               ref={props.draggableRefs}
-              id={props.idx + "_" + idx}
+              id={id}
               item
-              sm={gridSize - Grid_Gap}
+              sm={gridSize - gridGap}
             >
               <WidgetCmp {...cmpProps} />
             </MuiGrid>
@@ -35,18 +40,19 @@ export const Grid = (props: GridProps) => {
 
         return (
           <MuiGrid
+            key={props.idx}
             sx={{
               p: 2,
-              background: "rgb(240,240,255)",
-              color: "#000000",
-              "&:not(&:last-child)": {
-                borderRight: "3px solid #000000",
+              background: 'rgb(240,240,255)',
+              color: '#000000',
+              '&:not(&:last-child)': {
+                borderRight: '3px solid #000000',
               },
             }}
             ref={props.draggableRefs}
-            id={props.idx + "_" + idx}
+            id={`${props.idx}_${idx}`}
             item
-            sm={val - Grid_Gap}
+            sm={val - gridGap}
           >
             <Typography textAlign="center">[Size - {val}]</Typography>
           </MuiGrid>

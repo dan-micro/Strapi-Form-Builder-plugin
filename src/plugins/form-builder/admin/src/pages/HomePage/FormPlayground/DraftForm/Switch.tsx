@@ -1,20 +1,10 @@
-import React from "react";
-import { FormConfig } from "../../store";
-import {
-  Box,
-  Switch as MuiSwitch,
-  FormControlLabel,
-  FormGroup,
-} from "@mui/material";
+import React from 'react';
 
-const colorOptions = [
-  "primary",
-  "secondary",
-  "error",
-  "info",
-  "success",
-  "warning",
-];
+import { Box, Switch as MuiSwitch, FormControlLabel, FormGroup } from '@mui/material';
+
+import { FormConfig } from '../../store';
+
+const colorOptions = ['primary', 'secondary', 'error', 'info', 'success', 'warning'];
 
 type SwitchProps = FormConfig;
 
@@ -26,11 +16,11 @@ export const Switch = (props: SwitchProps) => {
           sx={{ m: 0 }}
           control={
             <MuiSwitch
-              size={props.options.dense ? "small" : "medium"}
+              size={props.options.dense ? 'small' : 'medium'}
               color={
                 colorOptions.includes(props.options.color)
                   ? props.options.color
-                  : "primary"
+                  : 'primary'
               }
             />
           }

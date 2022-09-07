@@ -1,4 +1,4 @@
-import { atom } from "jotai";
+import { atom } from 'jotai';
 
 export interface FormConfig {
   title: string;
@@ -12,7 +12,7 @@ export interface FormConfig {
 
 export const formConfigAtom = atom<FormConfig[]>([]);
 export interface FormBuildModal {
-  mode: "create" | "edit";
+  mode: 'create' | 'edit';
   interfaceComponent: string;
   predefinedValues?: Record<string, any>;
   title?: string;

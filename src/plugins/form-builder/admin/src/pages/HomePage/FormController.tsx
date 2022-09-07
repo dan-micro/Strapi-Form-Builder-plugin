@@ -1,12 +1,15 @@
-import React, { RefObject, MutableRefObject } from "react";
-import { groupBy } from "lodash-es";
-import { useQuery } from "@tanstack/react-query";
-import { Grid, Paper, Stack, Typography } from "@mui/material";
-import { controlElementsConfig } from "./FormController/controlElementsConfig";
-import { Search } from "./FormController/Search";
-import { getWidgetsTypes } from "../../api/widgets/getWidgetsTypes";
-import { LoadingData } from "../../components/LoadingData/LoadingData";
-import { useFormControllerDnd } from "./FormController/useFormControllerDnd";
+import React, { RefObject, MutableRefObject } from 'react';
+
+import { Grid, Paper, Stack, Typography } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import { groupBy } from 'lodash-es';
+
+import { getWidgetsTypes } from '../../api/widgets/getWidgetsTypes';
+import { LoadingData } from '../../components/LoadingData/LoadingData';
+
+import { controlElementsConfig } from './FormController/controlElementsConfig';
+import { Search } from './FormController/Search';
+import { useFormControllerDnd } from './FormController/useFormControllerDnd';
 
 interface FormControllerProps {
   dropRef: RefObject<HTMLDivElement>;
@@ -15,17 +18,17 @@ interface FormControllerProps {
 
 export const FormController = (props: FormControllerProps) => {
   const { data, isLoading, error } = useQuery(
-    ["getWidgetsTypes"],
+    ['getWidgetsTypes'],
     () => getWidgetsTypes(),
     {
-      select: (d) => d.concat([{ attributes: { interfaceComponent: "grid" } }]),
-    }
+      select: (d) => d.concat([{ attributes: { interfaceComponent: 'grid' } }]),
+    },
   );
-  const controlElementsConfigToName = groupBy(controlElementsConfig, "name");
+  const controlElementsConfigToName = groupBy(controlElementsConfig, 'name');
   const { addWidgetRefToWidgetsRefs } = useFormControllerDnd(
     props.dropRef,
     props.formFieldsRef,
-    data
+    data,
   );
 
   return (
@@ -33,23 +36,23 @@ export const FormController = (props: FormControllerProps) => {
       elevation={3}
       sx={{
         p: 2,
-        flexBasis: "20%",
-        height: "fit-content",
-        position: "sticky",
+        flexBasis: '20%',
+        height: 'fit-content',
+        position: 'sticky',
         top: 20,
       }}
     >
       <Search />
       <LoadingData loading={isLoading} error={error}>
         {() => (
-          <Grid container gap={2} sx={{ position: "sticky" }}>
+          <Grid container gap={2} sx={{ position: 'sticky' }}>
             {data.map((el, idx) => {
               const widgetName = el.attributes.interfaceComponent;
               const elementConfig = controlElementsConfigToName[widgetName][0];
               return (
                 <Grid
                   sx={{
-                    minWidth: "max-content",
+                    minWidth: 'max-content',
                   }}
                   key={widgetName + idx}
                   id={widgetName}
@@ -60,7 +63,7 @@ export const FormController = (props: FormControllerProps) => {
                   <Paper
                     sx={{
                       p: 2,
-                      cursor: "pointer",
+                      cursor: 'pointer',
                     }}
                   >
                     <Stack gap={2} alignItems="center">

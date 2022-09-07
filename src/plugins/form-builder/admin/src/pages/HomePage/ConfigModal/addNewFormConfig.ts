@@ -1,16 +1,17 @@
-import { cloneDeep } from "lodash-es";
-import { FormConfig } from "../store";
+import { cloneDeep } from 'lodash-es';
+
+import { FormConfig } from '../store';
 
 export const addNewFormConfig = (
   formConfigs: FormConfig[],
   newElementConfig: FormConfig,
-  path: string
+  path: string,
 ) => {
   if (path.length === 0) {
     return formConfigs.concat([newElementConfig]);
   }
 
-  const pathArr = path.split("_");
+  const pathArr = path.split('_');
   const formConfigIndex = +pathArr[0];
 
   if (pathArr.length > 1) {

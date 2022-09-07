@@ -5,11 +5,12 @@
  */
 
 import React, { useEffect, useRef } from 'react';
+
 import pluginId from '../../pluginId';
 
-type InitializerProps = {
+interface InitializerProps {
   setPlugin: (id: string) => void;
-};
+}
 
 const Initializer: React.FC<InitializerProps> = ({ setPlugin }) => {
   const ref = useRef<(id: string) => void | null>(null);

@@ -1,7 +1,7 @@
-import { Typography } from "@mui/material";
-import React, { FC, ReactElement } from "react";
+import React, { FC, ReactElement } from 'react';
 
-import styled, { keyframes } from "styled-components";
+import { Typography } from '@mui/material';
+import styled, { keyframes } from 'styled-components';
 
 export interface LoadingDataProps {
   loading: boolean;

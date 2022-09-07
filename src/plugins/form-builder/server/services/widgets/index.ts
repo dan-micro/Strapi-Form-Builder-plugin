@@ -1,3 +1,3 @@
-import getWidgetTypes from "./getWidgetTypes";
+import getWidgetTypes from './getWidgetTypes';
 
 export default getWidgetTypes;

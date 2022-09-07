@@ -1,14 +1,10 @@
-import React from "react";
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { WidgetTypeOptionProps } from "../WidgetTypeOption";
-import { OptionWrapper } from "./OptionWrapper";
+import React from 'react';
+
+import { MenuItem, Select } from '@mui/material';
+
+import { WidgetTypeOptionProps } from '../WidgetTypeOption';
+
+import { OptionWrapper } from './OptionWrapper';
 
 type EnumOptionProps = WidgetTypeOptionProps;
 export const EnumOption = (props: EnumOptionProps) => {
@@ -21,8 +17,10 @@ export const EnumOption = (props: EnumOptionProps) => {
         value={props.value}
         onChange={(e) => props.onChange(e.target.value)}
       >
-        {props.values.split(", ").map((val) => (
-          <MenuItem value={val}>{val}</MenuItem>
+        {props.values.split(', ').map((val) => (
+          <MenuItem key={val} value={val}>
+            {val}
+          </MenuItem>
         ))}
       </Select>
     </OptionWrapper>

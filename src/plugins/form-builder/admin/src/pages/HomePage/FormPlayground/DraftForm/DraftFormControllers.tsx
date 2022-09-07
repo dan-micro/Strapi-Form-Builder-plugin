@@ -1,19 +1,18 @@
-import { IconButton, Stack } from "@mui/material";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import React from "react";
-import { useUpdateAtom } from "jotai/utils";
-import { formBuildModalAtom, FormConfig, formConfigAtom } from "../../store";
+import React from 'react';
+
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import { IconButton, Stack } from '@mui/material';
+import { useUpdateAtom } from 'jotai/utils';
+
+import { formBuildModalAtom, FormConfig, formConfigAtom } from '../../store';
 
 interface DraftFormControllersProps {
   config: FormConfig;
   position: number;
 }
-export const DraftFormControllers = ({
-  config,
-  position,
-}: DraftFormControllersProps) => {
+export const DraftFormControllers = ({ config, position }: DraftFormControllersProps) => {
   const setFormConfig = useUpdateAtom(formConfigAtom);
   const setFormBuildModal = useUpdateAtom(formBuildModalAtom);
 
@@ -35,7 +34,7 @@ export const DraftFormControllers = ({
 
   const editHandler = () => {
     setFormBuildModal({
-      mode: "edit",
+      mode: 'edit',
       interfaceComponent: config.interfaceComponent,
       predefinedValues: config.options,
       title: config.title,
@@ -46,14 +45,14 @@ export const DraftFormControllers = ({
   return (
     <Stack
       sx={{
-        position: "absolute",
+        position: 'absolute',
         right: 0,
         top: 0,
-        background: "#505050",
+        background: '#505050',
         mr: 1,
         mt: 1,
-        borderRadius: "8px",
-        svg: { fill: "#fff" },
+        borderRadius: '8px',
+        svg: { fill: '#fff' },
       }}
       gap={1}
       alignItems="center"

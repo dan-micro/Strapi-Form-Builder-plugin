@@ -1,7 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
 exports.default = ({ strapi }) => ({
-    index(ctx) {
-        ctx.body = strapi.plugin("form-builder").service("widgets").getWidgets();
-    },
+  index(ctx) {
+    ctx.body = strapi.plugin('form-builder').service('widgets').getWidgets();
+  },
 });

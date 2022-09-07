@@ -1,9 +1,9 @@
-import { Button } from "./Button";
-import { Switch } from "./Switch";
-import { File } from "./File";
-import { Select } from "./Select";
-import { TextInput } from "./TextInput";
-import { Grid } from "./Grid";
+import { Button } from './Button';
+import { File } from './File';
+import { Grid } from './Grid';
+import { Select } from './Select';
+import { Switch } from './Switch';
+import { TextInput } from './TextInput';
 
 export const widgetTypeToWidgetCmp = {
   input: TextInput,

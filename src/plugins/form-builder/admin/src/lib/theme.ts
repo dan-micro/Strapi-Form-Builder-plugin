@@ -1,7 +1,8 @@
-import { createTheme, ThemeOptions } from "@mui/material";
+import { createTheme, ThemeOptions } from '@mui/material';
+
 const themeOptions: ThemeOptions = {
   typography: {
-    fontFamily: "Inter",
+    fontFamily: 'Inter',
   },
 };
 export const theme = createTheme(themeOptions);

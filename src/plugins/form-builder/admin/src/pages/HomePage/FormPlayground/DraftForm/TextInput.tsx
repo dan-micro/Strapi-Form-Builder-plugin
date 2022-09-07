@@ -1,24 +1,21 @@
+import React, { useState, ElementType } from 'react';
+
+import CloseIcon from '@mui/icons-material/Close';
 import {
   FormControl,
   FormHelperText,
   // InputBaseComponentProps,
   Stack,
-} from "@mui/material";
-import { IconButton, InputAdornment, TextField } from "@mui/material";
-import { isEmpty } from "lodash-es";
-import React, { useState, ElementType } from "react";
-import { FormConfig } from "../../store";
-import CloseIcon from "@mui/icons-material/Close";
-import { MaskField } from "react-mask-field";
+  IconButton,
+  InputAdornment,
+  TextField,
+} from '@mui/material';
+import { isEmpty } from 'lodash-es';
+import { MaskField } from 'react-mask-field';
 
-const colorOptions = [
-  "primary",
-  "secondary",
-  "error",
-  "info",
-  "success",
-  "warning",
-];
+import { FormConfig } from '../../store';
+
+const colorOptions = ['primary', 'secondary', 'error', 'info', 'success', 'warning'];
 
 // type CustomMaskFieldProps = ElementType<InputBaseComponentProps> & {
 //   mask: "date" | "datetime" | "time" | "fulltime" | "phone" | "card";
@@ -30,36 +27,34 @@ const colorOptions = [
 
 type TextInputProps = FormConfig;
 export const TextInput = (props: TextInputProps) => {
-  const [value, setValue] = useState("");
-  const [count, setCount] = useState((props.options.value ?? "").length);
+  const [value, setValue] = useState('');
+  const [count, setCount] = useState((props.options.value ?? '').length);
 
   const EndAdornment = (
     <InputAdornment position="end">
-      <IconButton onClick={() => setValue("")} edge="end" size="small">
+      <IconButton onClick={() => setValue('')} edge="end" size="small">
         <CloseIcon />
       </IconButton>
     </InputAdornment>
   );
 
   return (
-    <FormControl sx={{ width: "100%" }}>
+    <FormControl sx={{ width: '100%' }}>
       <TextField
         variant={
           props.options.filled
-            ? "filled"
+            ? 'filled'
             : props.options.outlined
-            ? "outlined"
-            : "standard"
+            ? 'outlined'
+            : 'standard'
         }
         label={props.options.label}
         value={value}
         multiline={props.options.autogrow ?? false}
         color={
-          colorOptions.includes(props.options.color)
-            ? props.options.color
-            : "primary"
+          colorOptions.includes(props.options.color) ? props.options.color : 'primary'
         }
-        size={props.options.dense ? "small" : "medium"}
+        size={props.options.dense ? 'small' : 'medium'}
         onChange={(e) => {
           setValue(e.target.value);
           setCount(count + 1);
@@ -83,9 +78,7 @@ export const TextInput = (props: TextInputProps) => {
         justifyContent="space-between"
         sx={{ pt: 0.5 }}
       >
-        {props.options.hint && (
-          <FormHelperText>{props.options.hint}</FormHelperText>
-        )}
+        {props.options.hint && <FormHelperText>{props.options.hint}</FormHelperText>}
         {props.options.counter && <FormHelperText>{count}</FormHelperText>}
       </Stack>
     </FormControl>

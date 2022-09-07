@@ -190,7 +190,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.tsx'],
+      files: ['src/*.tsx'],
       rules: {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
